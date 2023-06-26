@@ -51,17 +51,21 @@ function App() {
     </Navbar>
     <Container className={`main-frame ${animation ? 'introMainPage' : ''}`}>
     <h1 className='main-title'>Julián Alberti</h1>
-
+    
     <h1 className='sub-main-title'>About Me</h1>
+    
+    <h5 className='about-me'>
+    I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
+    I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
+    </h5>
     </Container>
 
     <div className='button-frame'>
     <div id="intro-button" className={`border-button ${animation ? 'introAnimation' : ''}`}
         onClick={handleClic}>
         
-      <Container className='name-button'>
-      <h1>Julián Alberti</h1> 
-      <sub>Web Developer</sub>
+      <Container className='name-button tp-transform'>
+      <h1>Welcome</h1> 
       </Container>
       
       </div>
