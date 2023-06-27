@@ -33,22 +33,41 @@
       opacity: 100%;
     }
   }
+  .main-frame{
+    position: relative;
+    opacity: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
   .main-title{
     position: relative;
     font-size: 3em;
+    margin-top: 1em;
     pointer-events: none;
   }
   .sub-main-title{
     position: relative;
     font-size: 2em;
-    margin-top: 1em;
+    margin-top: -2em;
     pointer-events: none;
   }
   .about-me{
     color: #f9f9f9;
     position: relative;
-    margin-top: 2em;
+    margin-top: -10em;
     font-size: 1em;
+  }
+  .thumbnails{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -5em;
+    bottom: 5em;
+    display: block;
+    width: min-content;
   }
 }
 
@@ -63,6 +82,15 @@
       opacity: 100%;
     }
   }
+  .main-frame{
+    position: relative;
+    opacity: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
   .main-title{
     position: relative;
     font-size: 3em;
@@ -72,18 +100,20 @@
   .sub-main-title{
     position: relative;
     font-size: 2em;
-    margin-top: 2em;
+    
     pointer-events: none;
   }
   .about-me{
     color: #f9f9f9;
     position: relative;
     margin-top: 1em;
+    bottom: 6em;
   }
   .thumbnails{
     position: relative;
-    left: 25vw;
-    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 12em;
     display: block;
     width: min-content;
   }
@@ -132,7 +162,6 @@
   }
   .thumbnails{
     top: -7em;
-    
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -142,7 +171,27 @@
   .row{
     flex-wrap: nowrap;
   }
-  
+  .modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - var(--bs-modal-margin) * 2);
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+  }
 }
 
 

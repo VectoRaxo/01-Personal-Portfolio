@@ -13,25 +13,22 @@ import Modal from 'react-bootstrap/Modal';
 
 
 function MyVerticallyCenteredModal(props) {
+  const { src, alt, ...modalProps } = props;
+
   return (
     <Modal
-      {...props}
+      {...modalProps}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          {alt}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <Image src={src} alt={alt} rounded />
       </Modal.Body>
     </Modal>
   );
@@ -42,6 +39,14 @@ function MyVerticallyCenteredModal(props) {
 function App() {
   
     const [modalShow, setModalShow] = React.useState(false);
+
+    const [selectedImage, setSelectedImage] = React.useState(null);
+
+    const handleImageClick = (src, alt) => {
+      setSelectedImage({ src, alt });
+      setModalShow(true);
+    };
+
     const [animation, setAnimation] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const bodyBG = document.body
@@ -108,21 +113,21 @@ function App() {
             <img
               
               src="src\assets\img\vector\marta1.PNG"
-              alt="First slide"
+              alt="First"
             />
           </Carousel.Item>
           <Carousel.Item >
             <img
               
-              src="src\assets\img\vector\mb.PNG"
-              alt="Second slide"
+              src="src\assets\img\vector\ab.PNG"
+              alt="Second"
             />
           </Carousel.Item>
           <Carousel.Item >
             <img
               
-              src="src\assets\img\vector\noob-saibot.png"
-              alt="Third slide"
+              src="src\assets\img\vector\noob.png"
+              alt="Third"
             />
           </Carousel.Item>
           </Carousel>
@@ -130,15 +135,22 @@ function App() {
           <Container>
             <Row>
               <Col xs={6} md={4}>
-                <div data-bs-toggle="modal" data-bs-target="#martaModal" onClick={() => setModalShow(true)}>
-                <Image id="martaModal" src="src\assets\img\vector\marta1.PNG" rounded />
+                <div data-bs-toggle="modal" data-bs-target="#martaModal" 
+                 onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")} >
+                  <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded />
                 </div>
               </Col>
               <Col xs={6} md={4}>
-                <Image id="mbModal" src="src\assets\img\vector\mb.PNG" rounded />
+                <div data-bs-toggle="modal" data-bs-target="#abModal" 
+                onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}>
+                  <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded />
+                </div>
               </Col>
               <Col xs={6} md={4}>
-                <Image id="noobModal" src="src\assets\img\vector\noob-saibot.png" rounded />
+                <div data-bs-toggle="modal" data-bs-target="#noobModal" 
+                onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}>
+                  <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded />
+                </div>
               </Col>
             </Row>
           </Container>
@@ -162,7 +174,10 @@ function App() {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+         src={selectedImage?.src}
+        alt={selectedImage?.alt}
       />
+       
     </div>
     
 
