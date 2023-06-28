@@ -37,35 +37,34 @@
     position: relative;
     opacity: 0;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: grid;
     justify-content: center;
     align-items: center;
   }
   .main-title{
     position: relative;
-    font-size: 3em;
-    margin-top: 1em;
+    font-size: 1em;
+    
     pointer-events: none;
   }
   .sub-main-title{
     position: relative;
     font-size: 2em;
-    margin-top: -2em;
+    
     pointer-events: none;
   }
   .about-me{
     color: #f9f9f9;
     position: relative;
-    margin-top: -10em;
+    
     font-size: 1em;
   }
   .thumbnails{
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -5em;
-    bottom: 5em;
+    
     display: block;
     width: min-content;
   }
@@ -86,15 +85,15 @@
     position: relative;
     opacity: 0;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: grid;
     justify-content: center;
     align-items: center;
   }
   .main-title{
     position: relative;
-    font-size: 3em;
-    margin-top: 1em;
+    font-size: 2em;
+    
     pointer-events: none;
   }
   .sub-main-title{
@@ -106,18 +105,22 @@
   .about-me{
     color: #f9f9f9;
     position: relative;
-    margin-top: 1em;
-    bottom: 6em;
+    
+    
   }
   .thumbnails{
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    bottom: 12em;
+    
     display: block;
     width: min-content;
   }
-  
+  .formButton{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Estilos para pantallas grandes (más de 900px de ancho) */
@@ -132,36 +135,37 @@
       opacity: 100%;
     }
   }
+  
   .main-frame{
     position: relative;
     opacity: 0;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: grid;
     justify-content: center;
     align-items: center;
   }
   .main-title{
     position: relative;
-    font-size: 4em;
-    top: 1.5em;
-    margin-top: -1em;
+    font-size: 2em;
+    
+    
     pointer-events: none;
   }
   .sub-main-title{
     position: relative;
-    top: 1.5em;
+    
     font-size: 2em;
-    pointer-events: none;
+    pointer-events: none; 
   }
   .about-me{
-    margin-top: -4em;
+    
     position: relative;
     color: #f9f9f9;
     
   }
   .thumbnails{
-    top: -7em;
+    
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -178,19 +182,18 @@
     flex-wrap: wrap;
     flex-direction: column-reverse;
     justify-content: center;
+    
   }
   .modal-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
     width: min-content;
-    color: var(--bs-modal-color);
-    pointer-events: auto;
-    background-color: var(--bs-modal-bg);
-    background-clip: padding-box;
-    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
-    border-radius: var(--bs-modal-border-radius);
-    outline: 0;
+  }
+  .formContact{
+    width: 25em;
+  }
+  .formButton{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -225,7 +228,10 @@
 
 
 
-
+.navbarRow{
+  position: relative;
+  height: 3em;
+}
 .introMainPage{
   animation: show-main-page 1s ease-in-out 0.5s forwards;
 }

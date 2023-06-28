@@ -1,20 +1,53 @@
+
 import './App.css'
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import React, { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
 function MyVerticallyCenteredModal(props) {
-  const { src, alt, ...modalProps } = props;
-
+  const { src, alt, ...modalProps } = props
+  if (src === 'contact'){
+    return (
+    <Modal
+      {...modalProps}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+    <Modal.Title id="contained-modal-title-vcenter">
+      Contact me!
+    </Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <Form className='formContact' name="contact" data-netlify="true">
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="name@example.com" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Message</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  </Modal.Body>
+</Modal>
+    )
+  }
   return (
     <Modal
       {...modalProps}
@@ -69,10 +102,13 @@ function App() {
       return () => {
         window.removeEventListener('resize', handleResize);
       };
+      
     }, [])
 
   return (
     <>
+    <Container className='navbarRow'>
+    <Row >
       <Navbar fixed='top' data-bs-theme={`${animation ? 'dark' : 'light'}`} expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="http://localhost:5173/">Julián Alberti</Navbar.Brand>
@@ -96,36 +132,49 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </Row>
+    </Container>
     <Container className={`main-frame ${animation ? 'introMainPage' : ''}`}>
-      <h1 className='main-title'>Julián Alberti</h1>
-      
+      <Row>
+      <div className='main-title'>
+        <h1>Julián Alberti</h1>
+      </div>
+      </Row>
+      <Row className="formButton">
+      <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleImageClick('contact')}>
+        <a className="btn btn-xl btn-outline-light" id='contactModal' >
+          Contact me!
+        </a>
+      </div>
+      </Row>
+
+      <Row>
       <h1 className='sub-main-title'>About Me</h1>
-      
-      <h5 className='about-me'>
+      </Row>
+      <Row className='about-me'>
+      <h5 >
       I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
       I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
       </h5>
-      <div className='thumbnails'>
-
+      </Row>
+      <Row className='thumbnails'>
+      <div >
       {isMobile ? (
           <Carousel>
           <Carousel.Item>
             <img
-              
               src="src\assets\img\vector\marta1.PNG"
               alt="First"
             />
           </Carousel.Item>
           <Carousel.Item >
-            <img
-              
+            <img       
               src="src\assets\img\vector\ab.PNG"
               alt="Second"
             />
           </Carousel.Item>
           <Carousel.Item >
-            <img
-              
+            <img         
               src="src\assets\img\vector\noob.png"
               alt="Third"
             />
@@ -157,6 +206,7 @@ function App() {
         )}
       
       </div>
+      </Row>
     </Container>
 
     <div className='button-frame'>
