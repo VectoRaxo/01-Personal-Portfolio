@@ -24,15 +24,7 @@
 /* Estilos para pantallas pequeñas (-600px de ancho) */
 @media (max-width: 600px) {
   
-  @keyframes show-main-page {
-    from {
-      pointer-events: none;
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
-  }
+  
   .main-frame{
     position: relative;
     opacity: 0;
@@ -72,15 +64,7 @@
 
 /* Estilos para pantallas medianas (de 601px a 900px de ancho) */
 @media (min-width: 601px) and (max-width: 900px) {
-  @keyframes show-main-page {
-    from {
-      pointer-events: none;
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
-  }
+  
   .main-frame{
     position: relative;
     opacity: 0;
@@ -126,15 +110,7 @@
 /* Estilos para pantallas grandes (más de 900px de ancho) */
 @media (min-width: 901px) {
 
-  @keyframes show-main-page {
-    from {
-      pointer-events: none;
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
-  }
+  
   
   .main-frame{
     position: relative;
@@ -170,7 +146,6 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: min-content;
   }
   .row{
     flex-wrap: nowrap;
@@ -197,6 +172,15 @@
   }
 }
 
+@keyframes show-main-page {
+  from {
+    pointer-events: none;
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
 
 .button-frame{
   width: 100%;
@@ -205,28 +189,6 @@
   justify-content: center;
   align-items: center;
 }
-
-@keyframes fade-border{
-  0% {
-    width: 20em;
-    height: 10em;
-    opacity: 100%;
-    pointer-events: none;
-  }
-  50% {
-    width: 80%;
-    opacity: 0%;
-    pointer-events: none;
-  }
-  100% {
-    width: 85%;
-    height: 20em;
-    opacity: 0%;
-    pointer-events: none;
-  }
-}
-
-
 
 .navbarRow{
   position: relative;
@@ -256,7 +218,6 @@
 
 
 .name-button{
-  position:absolute;
   font-size: 1.5em;
   margin-top: 1.8em;
   transform-origin: center;
