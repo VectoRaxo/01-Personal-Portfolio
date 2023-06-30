@@ -37,28 +37,24 @@
   .main-title{
     position: relative;
     font-size: 1em;
-    
     pointer-events: none;
   }
   .sub-main-title{
     position: relative;
-    font-size: 2em;
-    
+    font-size: 2em; 
     pointer-events: none;
   }
   .about-me{
     color: #f9f9f9;
     position: relative;
-    
     font-size: 1em;
   }
   .thumbnails{
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    
     display: block;
-    width: min-content;
+    
   }
 }
 
@@ -89,16 +85,13 @@
   .about-me{
     color: #f9f9f9;
     position: relative;
-    
-    
   }
   .thumbnails{
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    
     display: block;
-    width: min-content;
+    
   }
   .formButton{
     width: fit-content;
@@ -123,25 +116,19 @@
   }
   .main-title{
     position: relative;
-    font-size: 2em;
-    
-    
+    font-size: 2em;  
     pointer-events: none;
   }
   .sub-main-title{
-    position: relative;
-    
+    position: relative;    
     font-size: 2em;
     pointer-events: none; 
   }
-  .about-me{
-    
+  .about-me{  
     position: relative;
-    color: #f9f9f9;
-    
+    color: #f9f9f9;   
   }
-  .thumbnails{
-    
+  .thumbnails{  
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -156,8 +143,7 @@
     min-height: calc(100% - var(--bs-modal-margin) * 2);
     flex-wrap: wrap;
     flex-direction: column-reverse;
-    justify-content: center;
-    
+    justify-content: center;  
   }
   .modal-content {
     width: min-content;

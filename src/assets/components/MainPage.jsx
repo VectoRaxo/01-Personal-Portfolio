@@ -57,20 +57,17 @@ export const MainPage = () => {
         <div>
         {isMobile ? (
             <Carousel>
-            <Carousel.Item>
-                <img
-                src="src\assets\img\vector\marta1.PNG"
-                alt="First" />
+            <Carousel.Item data-bs-toggle="modal" data-bs-target="#martaModal"
+                    onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}  >
+                <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid"  />
             </Carousel.Item>
-            <Carousel.Item>
-                <img
-                src="src\assets\img\vector\ab.PNG"
-                alt="Second" />
+            <Carousel.Item data-bs-toggle="modal" data-bs-target="#abModal"
+                    onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}  >
+                <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded className="img-fluid"  />
             </Carousel.Item>
-            <Carousel.Item>
-                <img
-                src="src\assets\img\vector\noob.png"
-                alt="Third" />
+            <Carousel.Item data-bs-toggle="modal" data-bs-target="#noobModal"
+                    onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}  >
+                <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded className="img-fluid"  />
             </Carousel.Item>
             </Carousel>
         ) : (
@@ -79,7 +76,7 @@ export const MainPage = () => {
                 <Col xs={6} md={4} className="mx-1">
                 <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#martaModal"
                     onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}>
-                    <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid"/>
+                    <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid" />
                 </div>
                 </Col>
                 <Col xs={6} md={4} className="mx-1">
@@ -107,6 +104,7 @@ export const MainPage = () => {
         onHide={() => setModalShow(false)}
          src={selectedImage?.src}
         alt={selectedImage?.alt}
+        isMobile={isMobile}
       />
     </Row>
     </Container>

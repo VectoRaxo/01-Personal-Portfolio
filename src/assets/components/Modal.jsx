@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 
 
 export function ShowModal(props) {
-    const { src, alt, ...modalProps } = props
+    const { src, alt, isMobile, ...modalProps } = props
     if (src === 'contact'){
       return (
       <Modal
@@ -51,7 +51,11 @@ export function ShowModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Image src={src} alt={alt} rounded />
+            {isMobile ? (
+          <Image src={src} alt={alt} rounded fluid/>
+            ) : (
+                <Image src={src} alt={alt} rounded/>
+            )}
         </Modal.Body>
       </Modal>
     );
