@@ -93,6 +93,7 @@
     display: block;
     
   }
+  
   .formButton{
     width: fit-content;
     margin-left: auto;
@@ -133,6 +134,20 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
+  }
+  .image-wrapper {
+    position: relative; /* Asegura que el div se superponga a la imagen */
+    width: fit-content;
+  }
+  .image-wrapper:hover::before {
+    content: ""; /* Pseudo-elemento para crear el fondo */
+    position: absolute; /* Se superpone a la imagen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:hsla(0, 0%, 100%, 0.5) ; /* Cambia el color de fondo y la opacidad */
+    z-index: 1; /* Asegura que el fondo esté por encima de la imagen */
   }
   .row{
     flex-wrap: nowrap;
@@ -251,6 +266,7 @@ body {
   from {
     background-color: #5f67fc;
     background-image: url('./assets/img/night.png') ;
+    
     
   }
   to {
