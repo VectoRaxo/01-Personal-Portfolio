@@ -17,8 +17,7 @@
 
 
 .base {
-  padding: 0 !important;
-  min-height: 90vh;
+  min-height: 100vh;
   max-height: fit-content;
 }
 
@@ -31,21 +30,20 @@
     opacity: 0;
     width: 100%;
     min-height: 100%;
-    margin-top: 2em;
+    
     justify-content: center;
     align-items: center;
   }
   .main-title{
     position: relative;
-    top: 2em;
-    margin-bottom: 2em;
+    top:1em;
+    margin-bottom: 4em;
     font-size: 1em;
     pointer-events: none;
   }
   .sub-main-title{
     position: relative;
     font-size: 2em; 
-    margin-bottom: 1em;  
     pointer-events: none;
   }
   .about-me{
@@ -119,7 +117,6 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
 }
 
   .main-frame{
@@ -270,7 +267,7 @@ body {
 
 body {
   background-color: #5f67fc;
-  background-image: url(/src/assets/img/night.png);
+  background-image: url(/src/assets/img/sunset.png);
   background-size: cover;
   background-attachment: fixed;
   display: flex;
