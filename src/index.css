@@ -64,12 +64,7 @@
 /* Estilos para pantallas medianas (de 601px a 900px de ancho) */
 @media (min-width: 601px) and (max-width: 900px) {
   
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-  }
+ 
   .main-frame{
     position: relative;
     opacity: 0;
@@ -113,11 +108,7 @@
 
 /* Estilos para pantallas grandes (más de 900px de ancho) */
 @media (min-width: 901px) {
-  html,
-body {
-  margin: 0;
-  padding: 0;
-}
+
 
   .main-frame{
     position: relative;
@@ -267,7 +258,7 @@ body {
 
 body {
   background-color: #5f67fc;
-  background-image: url(/src/assets/img/sunset.png);
+  background-image: url(/src/assets/img/soft.jpg);
   background-size: cover;
   background-attachment: fixed;
   display: flex;
