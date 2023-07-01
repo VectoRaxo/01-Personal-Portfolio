@@ -12,39 +12,34 @@ import { useSpring, animated } from '@react-spring/web';
 function App() {
   
     const [animation, setAnimation] = useState(false);
-    const bodyBG = document.body
-    
-
     const [animationCompleted, setAnimationCompleted] = useState(false);
+   
     useEffect(() => {
       
       const handleAnimationEnd = () => {
-        setAnimationCompleted(false);
-      };
-      if (animation) {
-        setAnimationCompleted(true);
+        setAnimationCompleted(false)
       }
-  
-      const introButtonElement = document.getElementById('intro-button');
-      introButtonElement.addEventListener('animationend', handleAnimationEnd);
+      if (animation) {
+        setAnimationCompleted(true)
+      }
       
+      const introButtonElement = document.getElementById('intro-button')
+      introButtonElement.addEventListener('animationend', handleAnimationEnd)
       return () => {
-        introButtonElement.removeEventListener('animationend', handleAnimationEnd);
-      };
-      
-    }, [animation]);
+        introButtonElement.removeEventListener('animationend', handleAnimationEnd)
+      }
+    }, [animation])
     
     const fadeAnimation = useSpring({
       width: animation ? '85%' : '20em',
       height: animation ? '20em' : '10em',
       opacity: animation ? '0%' : '100%',
       pointerEvents: animation ? 'none' : 'auto',
-    });
+    })
 
     const handleClic = () => {
       // Cambiar el estado de "animation" al hacer clic
       setAnimation(true);
-      bodyBG.className = 'introBodyAnimation'
     }
   return (
     <>
