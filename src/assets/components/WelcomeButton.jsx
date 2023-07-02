@@ -8,7 +8,7 @@ export const WelcomeButton = ({onClick,animation}) => {
         onClick={onClick}>
         
         <Container className='name-button tp-transform'>
-          <h1>Welcome</h1> 
+          <h1 style={{color:'#9FC131'}}>Welcome</h1> 
         </Container>
       </div>
     </div>

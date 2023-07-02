@@ -9,6 +9,7 @@ import { NavBar } from './NavBar';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
+
 export const MainPage = () => {
     const [modalShow, setModalShow] = React.useState(false);
     const [selectedImage, setSelectedImage] = React.useState(null);
@@ -32,23 +33,27 @@ export const MainPage = () => {
       };
     }, [])
 
+    function goToHome() {
+        // Realiza la acción deseada al hacer clic en el div
+        window.location.href = "http://localhost:5173/"; // Redirige a la página de inicio
+      }
 
   return (
 <>
     
-    <Container className='main-frame introMainPage'>
+    <Container className='main-frame introMainPage' style={{backgroundColor:'#D6D58E', padding:'2rem', borderRadius:'2rem'}}>
         {/* <NavBar /> */}
             <Col className='contentFrame' >
                 <Row>
                     <div className='main-title'>
-                    <h1>Julián Alberti</h1>
+                    <h1 >Julián Alberti</h1>
                     </div>
                 </Row>
                 <Row>
                     <h1 className='sub-main-title'>About Me</h1>
                 </Row>
                 <Row className='about-me' style={{marginBottom:'2em'}}>
-                    <h5>
+                    <h5 style={{color:'#005C53'}}>
                     I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
                     I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
                     </h5>
@@ -61,8 +66,9 @@ export const MainPage = () => {
                 onSelect={(k) => setKey(k)}
                 className="mb-3"
                 justify
+                style={{color:'#005C53'}}
                 >
-                <Tab eventKey="home" title="My Profile" style={{ textAlign: 'left', color: 'white', width: '90%', margin:'auto' }}>
+                <Tab eventKey="home" title="My Profile" style={{ textAlign: 'left', color: '#005C53', width: '90%', margin:'auto' }}>
                     <Row>
                         <h1>Experience</h1>
                     </Row>
@@ -140,51 +146,51 @@ export const MainPage = () => {
 
 
                 <Tab eventKey="profile" title="My Hobbies">
-                <Row className='thumbnails'>
-                    <div>
-                    {isMobile ? (
-                        <Carousel>
-                        <Carousel.Item data-bs-toggle="modal" data-bs-target="#martaModal"
-                                onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}  >
-                            <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid"  />
-                        </Carousel.Item>
-                        <Carousel.Item data-bs-toggle="modal" data-bs-target="#abModal"
-                                onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}  >
-                            <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded className="img-fluid"  />
-                        </Carousel.Item>
-                        <Carousel.Item data-bs-toggle="modal" data-bs-target="#noobModal"
-                                onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}  >
-                            <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded className="img-fluid"  />
-                        </Carousel.Item>
-                        </Carousel>
-                    ) : (
-                        <Container>
-                        <Row >
-                            <Col>
-                            <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#martaModal"
-                                onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}>
-                                <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid" />
-                            </div>
-                            </Col>
-                            <Col>
-                            <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#abModal"
-                                onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}>
-                                <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded className="img-fluid"/>
-                            </div>
-                            </Col>
-                            <Col>
-                            <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#noobModal"
-                                onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}>
-                                <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded className="img-fluid"/>
-                            </div>
-                            </Col>
-                        </Row>
-                        </Container>
-                        
-                    )}
+                    <Row className='thumbnails'>
+                        <div>
+                        {isMobile ? (
+                            <Carousel>
+                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#martaModal"
+                                    onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}  >
+                                <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid"  />
+                            </Carousel.Item>
+                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#abModal"
+                                    onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}  >
+                                <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded className="img-fluid"  />
+                            </Carousel.Item>
+                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#noobModal"
+                                    onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}  >
+                                <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded className="img-fluid"  />
+                            </Carousel.Item>
+                            </Carousel>
+                        ) : (
+                            <Container>
+                            <Row >
+                                <Col>
+                                <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#martaModal"
+                                    onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}>
+                                    <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid" />
+                                </div>
+                                </Col>
+                                <Col>
+                                <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#abModal"
+                                    onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}>
+                                    <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded className="img-fluid"/>
+                                </div>
+                                </Col>
+                                <Col>
+                                <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#noobModal"
+                                    onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}>
+                                    <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded className="img-fluid"/>
+                                </div>
+                                </Col>
+                            </Row>
+                            </Container>
+                            
+                        )}
 
-                    </div>
-        </Row>
+                        </div>
+                    </Row>
                 </Tab>
                 <Tab eventKey="contact" title="Contact">
                     <Row className="formButton">
@@ -207,6 +213,19 @@ export const MainPage = () => {
       />
     </Row>
     </Container>
+        {/* <footer>
+            <Container
+                style={{position:'absolute',
+                backgroundColor:'black',
+                width:'100vw',
+                color:'white',
+                marginLeft:'auto',
+                marginRight:'auto'}}>
+                <Col>
+                    Contact!
+                </Col>
+            </Container>
+        </footer> */}
   </>
 )
 
