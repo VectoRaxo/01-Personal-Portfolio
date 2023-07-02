@@ -136,8 +136,8 @@ export const MainPage = () => {
                     </Row>
                     <Row style={{width: '90%', marginLeft:'3em', fontStyle:'italic'}}>
                         <h6>
-                        · Generation of forms, reports, and Excel handling <br/>
-                        · Development of applications with Visual Basic and .NET.
+                        · D.A.I Development of computer applications. (2012) <br/>
+                        I.E.S Martín Rivero.
                         </h6>
                     </Row>
                     

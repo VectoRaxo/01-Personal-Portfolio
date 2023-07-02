@@ -36,9 +36,9 @@
   }
   .main-title{
     position: relative;
-    top:1em;
-    margin-bottom: 4em;
-    font-size: 1em;
+    
+    margin-bottom: 2em;
+    font-size: 2em;
     pointer-events: none;
   }
   .sub-main-title{
@@ -74,7 +74,7 @@
   }
   .main-title{
     position: relative;
-    top: 1em;
+    
     margin-bottom: 2em;
     font-size: 2em;
     pointer-events: none;
@@ -119,7 +119,7 @@
   
   .main-title{
     position: relative;
-    top: 1em;
+    
     margin-bottom: 2em;
     font-size: 2em;  
     pointer-events: none;
@@ -167,6 +167,8 @@
   }
   .modal-content {
     width: min-content;
+    background-color:#D6D58E;
+    color: #005C53;
   }
   .formContact{
     width: 25em;
@@ -178,6 +180,7 @@
   }
 }
 .nav-tabs{
+  
   --bs-border-color: #005C53;
   --bs-body-bg:#005C53;
   --bs-secondary-bg: white;
