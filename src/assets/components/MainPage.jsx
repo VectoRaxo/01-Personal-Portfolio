@@ -23,7 +23,7 @@ export const MainPage = () => {
 
     useEffect(() => {
       const handleResize = () => {
-        const mediaQuery = window.matchMedia('(max-width: 750px)');
+        const mediaQuery = window.matchMedia('(max-width: 900px)');
         setIsMobile(mediaQuery.matches);
       };
       handleResize(); // Verificar el tamaño inicial de la pantalla

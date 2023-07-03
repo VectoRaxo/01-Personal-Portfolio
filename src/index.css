@@ -111,6 +111,8 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  
 }
 
 /* Estilos para pantallas grandes (más de 900px de ancho) */
@@ -148,9 +150,13 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    display: block;
-    
+    display: block;  
   }
+
+  .modal-content {
+    width: min-content;
+  }
+
   .image-wrapper {
     position: relative; /* Asegura que el div se superponga a la imagen */
     width: fit-content;
@@ -175,11 +181,7 @@
     flex-direction: column-reverse;
     justify-content: center;  
   }
-  .modal-content {
-    width: min-content;
-    background-color:#D6D58E;
-    color: #005C53;
-  }
+  
   .formContact{
     width: 25em;
   }
@@ -188,6 +190,12 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.modal-content {
+  padding: 1em;
+  background-color:#F2BE5C;
+  color: #1F0459;
 }
 
 .contentFrame{
@@ -201,7 +209,7 @@
 .tab-content{
   border-style: solid;
   border-color: #F2D64B;
-  padding: 1em;
+  padding: 2em;
   border-radius: 1em;
   background-color: #1F0459;
 }
