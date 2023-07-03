@@ -41,25 +41,37 @@ export const MainPage = () => {
   return (
 <>
     
-    <Container className='main-frame introMainPage' style={{backgroundColor:'#D6D58E', padding:'2rem', borderRadius:'2rem'}}>
+    <Container className='main-frame introMainPage'
+                style={{ backgroundImage: 'linear-gradient(to bottom, #1F0459, #F27979, #1F0459 )',
+                maxWidth: '960px',
+                minHeight: '100vh',
+                padding: '2rem',
+                borderColor:'#F2D64B',
+                borderWidth:'0.25em',
+                borderTopWidth: '0rem',
+                borderBottomWidth: '0rem',
+                borderStyle:'solid'
+                }}>
         {/* <NavBar /> */}
-            <Col className='contentFrame' >
+            <Col>
                 <Row>
                     <div className='main-title'>
-                    <h1 >Julián Alberti</h1>
+                    <h1 style={{fontFamily:'Montse'}}>Julián Alberti</h1>
                     </div>
                 </Row>
-                <Row>
-                    <h1 className='sub-main-title'>About Me</h1>
-                </Row>
-                <Row className='about-me' style={{marginBottom:'2em'}}>
-                    <h5 style={{color:'#005C53'}}>
-                    I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
-                    I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
-                    </h5>
-                </Row>
+                <div  className='contentFrame' >
+                    <Row>
+                        <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse'}}>About Me</h1>
+                    </Row>
+                    <Row className='about-me'>
+                        <h5 style={{color:'#F27979'}}>
+                        I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
+                        I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
+                        </h5>
+                    </Row>
+                </div>
             </Col>
-            <Container fluid="xs">
+            <Container fluid="xs" style={{ marginTop:'1em'}}>
                 <Tabs
                 id="justify-tab-example"
                 activeKey={key}
@@ -68,11 +80,11 @@ export const MainPage = () => {
                 justify
                 style={{color:'#005C53'}}
                 >
-                <Tab eventKey="home" title="My Profile" style={{ textAlign: 'left', color: '#005C53', width: '90%', margin:'auto' }}>
+                <Tab eventKey="home" title="My Profile" style={{ textAlign: 'left', color: '#F27979', width: '90%', margin:'auto' }}>
                     <Row>
                         <h1>Experience</h1>
                     </Row>
-                    <Row style={{width: '90%', margin:'auto' }}>
+                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
                         <h5>
                             Web developer - Freelance (2023)
                         </h5>
@@ -83,7 +95,7 @@ export const MainPage = () => {
                         · Use of Javascript, Typescript, React.js
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', margin:'auto' }}>
+                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
                         <h5>
                             Developing of videogames in Unity (2023)
                         </h5>
@@ -95,7 +107,7 @@ export const MainPage = () => {
 
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', margin:'auto' }}>
+                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
                         <h5>
                         Technical support and customer service (2021-2022)
                         </h5>
@@ -107,7 +119,7 @@ export const MainPage = () => {
                         · Teamwork.
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', margin:'auto' }}>
+                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
                         <h5>
                         Manager - El Baúl Gráfico (2015-2019)
                         </h5>
@@ -120,7 +132,7 @@ export const MainPage = () => {
                             machinery.
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', margin:'auto' }}>
+                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
                         <h5>
                         Application Developer (Internship)
                         </h5>
