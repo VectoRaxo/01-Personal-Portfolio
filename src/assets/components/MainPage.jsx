@@ -8,6 +8,7 @@ import { ShowModal } from "./Modal";
 import { NavBar } from './NavBar';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import YouTube from 'react-youtube';
 
 
 export const MainPage = () => {
@@ -42,21 +43,20 @@ export const MainPage = () => {
 <>
     
     <Container className='main-frame introMainPage'
-                style={{ backgroundImage: 'linear-gradient(to bottom, #1F0459, #F27979, #1F0459 )',
+                style={{ backgroundColor:'#1f04596f',
                 maxWidth: '960px',
                 minHeight: '100vh',
                 padding: '2rem',
                 borderColor:'#F2D64B',
                 borderWidth:'0.25em',
-                borderTopWidth: '0rem',
-                borderBottomWidth: '0rem',
+                borderRadius: '2em',
                 borderStyle:'solid'
                 }}>
         {/* <NavBar /> */}
             <Col>
                 <Row>
                     <div className='main-title'>
-                    <h1 style={{fontFamily:'Montse'}}>Julián Alberti</h1>
+                    <h1 style={{fontFamily:'Montse'}}>JULIAN ALBERTI</h1>
                     </div>
                 </Row>
                 <div  className='contentFrame' >
@@ -64,7 +64,7 @@ export const MainPage = () => {
                         <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse'}}>About Me</h1>
                     </Row>
                     <Row className='about-me'>
-                        <h5 style={{color:'#F27979'}}>
+                        <h5 style={{color:'white'}}>
                         I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
                         I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
                         </h5>
@@ -78,9 +78,8 @@ export const MainPage = () => {
                 onSelect={(k) => setKey(k)}
                 className="mb-3"
                 justify
-                style={{color:'#005C53'}}
                 >
-                <Tab eventKey="home" title="My Profile" style={{ textAlign: 'left', color: '#F27979', width: '90%', margin:'auto' }}>
+                <Tab eventKey="home" title="My Profile" style={{ textAlign: 'left', color: 'white', width: '90%', margin:'auto' }}>
                     <Row>
                         <h1>Experience</h1>
                     </Row>
@@ -89,7 +88,7 @@ export const MainPage = () => {
                             Web developer - Freelance (2023)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em', fontStyle:'italic'}}>
+                    <Row style={{width: '90%', marginLeft:'3em'}}>
                         <h6>
                         · Development and maintenance of websites. <br />
                         · Use of Javascript, Typescript, React.js
@@ -100,7 +99,7 @@ export const MainPage = () => {
                             Developing of videogames in Unity (2023)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em', fontStyle:'italic'}}>
+                    <Row style={{width: '90%', marginLeft:'3em'}}>
                         <h6>
                         · Development in C#, implementation of interfaces, <br/> use of
                         GitHub and creation of assets.
@@ -112,7 +111,7 @@ export const MainPage = () => {
                         Technical support and customer service (2021-2022)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em', fontStyle:'italic'}}>
+                    <Row style={{width: '90%', marginLeft:'3em'}}>
                         <h6>
                         · Incident management and database management. <br/>
                         · Web development and graphic design. <br/>
@@ -124,7 +123,7 @@ export const MainPage = () => {
                         Manager - El Baúl Gráfico (2015-2019)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em', fontStyle:'italic'}}>
+                    <Row style={{width: '90%', marginLeft:'3em'}}>
                         <h6>
                         · Graphic and textile printing, logo design, signage, and
                             event services. <br/>
@@ -137,7 +136,7 @@ export const MainPage = () => {
                         Application Developer (Internship)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em', fontStyle:'italic'}}>
+                    <Row style={{width: '90%', marginLeft:'3em'}}>
                         <h6>
                         · Generation of forms, reports, and Excel handling <br/>
                         · Development of applications with Visual Basic and .NET.
@@ -146,7 +145,7 @@ export const MainPage = () => {
                     <Row>
                         <h1>Education</h1>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em', fontStyle:'italic'}}>
+                    <Row style={{width: '90%', marginLeft:'3em'}}>
                         <h6>
                         · D.A.I Development of computer applications. (2012) <br/>
                         I.E.S Martín Rivero.
@@ -158,6 +157,9 @@ export const MainPage = () => {
 
 
                 <Tab eventKey="profile" title="My Hobbies">
+                <h1 style={{paddingBottom:'1em'}}>
+                            Vector Illustration
+                        </h1>
                     <Row className='thumbnails'>
                         <div>
                         {isMobile ? (
@@ -202,6 +204,13 @@ export const MainPage = () => {
                         )}
 
                         </div>
+                    </Row>
+                        <h1 style={{paddingTop:'1em'}}>
+                            Drone footage
+                        </h1>
+                    <Row style={{padding:'2em'}}>
+                        
+                        <YouTube videoId="https://www.youtube.com/watch?v=gyDIBpEuYQc" width={640} height={360} />
                     </Row>
                 </Tab>
                 <Tab eventKey="contact" title="Contact">

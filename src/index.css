@@ -25,8 +25,7 @@
 .base {
   min-height: 100vh;
   max-height: fit-content;
-  padding-top: 0rem !important;
-  padding-bottom: 0rem !important;
+ 
   
 }
 
@@ -194,34 +193,37 @@
 
 .modal-content {
   padding: 1em;
+  border-radius: 2em;
   background-color:#F2BE5C;
-  color: #1F0459;
+  color: white;
 }
 
 .contentFrame{
   border-style: solid;
   border-color: #F2D64B;
-  background-color: #1F0459;
-  
-  padding: 2em;
-  border-radius: 1em;
+  background-color: #1f04592f;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  border-radius: 2em;
 }
 .tab-content{
   border-style: solid;
   border-color: #F2D64B;
   padding: 2em;
-  border-radius: 1em;
-  background-color: #1F0459;
+  border-radius: 2em;
+  background-color: #1f04592f;
 }
 .nav-tabs{
   
   --bs-border-color: #F2D64B;
   --bs-body-bg:#F2BE5C;
-  --bs-secondary-bg: #1F0459;
+  --bs-secondary-bg: white;
   --bs-border-width:0em;
 }
 .nav {
-  --bs-link-color: #1F0459;
+  --bs-link-color: white;
   --bs-link-hover-color: white;
   --bs-secondary-color: #F238B1;
   --bs-nav-tabs-link-active-color: #1F0459;
@@ -242,6 +244,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .introMainPage{
@@ -255,12 +258,11 @@
   transform: translate(-50%, -50%);
   width: 20em;
   height: 10em;
-  border: 0.2em solid #F2BE5C;
+  border: 0.2em solid #F2D64B;
   border-radius: 3em;
+  background-color: #1f04592f;
 }
-.border-button:hover{
-  background-color: #d6d58e31;
-}
+
 
 .introAnimation{
   animation: fade-border 1s forwards;
@@ -301,7 +303,7 @@ body {
 
 body {
   background-color: #1F0459;
-  /* background-image: url(/src/assets/img/soft.jpg); */
+  background-image: url(/src/assets/img/soft.jpg);
   background-size: cover;
   background-attachment: fixed;
   min-width: fit-content;

@@ -51,7 +51,7 @@ function App() {
           onClick={handleClic}
         >
           <Container className="name-button tp-transform">
-            <h1 style={{color:'#F238B1'}}>Welcome</h1>
+            <h1 style={{color:'white'}}>Welcome</h1>
           </Container>
         </animated.div>
     </div>
