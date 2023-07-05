@@ -9,6 +9,7 @@ import { useSpring, animated } from '@react-spring/web';
 
 
 
+
 function App() {
   
     const [animation, setAnimation] = useState(false);
@@ -31,8 +32,7 @@ function App() {
     }, [animation])
     
     const fadeAnimation = useSpring({
-      width: animation ? '85%' : '20em',
-      height: animation ? '20em' : '10em',
+      
       opacity: animation ? '0%' : '100%',
       pointerEvents: animation ? 'none' : 'auto',
     })
@@ -41,6 +41,7 @@ function App() {
       // Cambiar el estado de "animation" al hacer clic
       setAnimation(true);
     }
+  
   return (
     <>
     <div className='button-frame'>
@@ -51,7 +52,7 @@ function App() {
           onClick={handleClic}
         >
           <Container className="name-button tp-transform">
-            <h1 style={{color:'white'}}>Welcome</h1>
+            <h1 style={{color:'white', fontSize:'2em'}}>Welcome</h1>
           </Container>
         </animated.div>
     </div>
