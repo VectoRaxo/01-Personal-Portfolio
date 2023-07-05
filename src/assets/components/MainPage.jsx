@@ -14,13 +14,13 @@ import YouTube from 'react-youtube';
 
 
 export const MainPage = () => {
-    const [modalShow, setModalShow] = React.useState(false);
-    const [selectedImage, setSelectedImage] = React.useState(null);
+    const [modalShow, setModalShow] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [key, setKey] = useState('home');
 
-    const handleImageClick = (src, alt) => {
-      setSelectedImage({ src, alt });
+    const handleImageClick = (src, alt, ind) => {
+      setSelectedImage({ src, alt, ind });
       setModalShow(true);
     };
 
@@ -173,16 +173,16 @@ export const MainPage = () => {
                         <div>
                         {isMobile ? (
                             <Carousel>
-                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#martaModal"
-                                    onClick={() => handleImageClick("assets/img/marta640.PNG")}  >
+                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#martaModal" interval={null}
+                                    onClick={() => handleImageClick("assets/img/marta640.PNG", '', 0)}  >
                                 <Image id="martaModal" src="assets/img/marta1.PNG" rounded className="img-fluid"  />
                             </Carousel.Item>
-                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#abModal"
-                                    onClick={() => handleImageClick("assets/img/ab640.png")}  >
+                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#abModal" interval={null}
+                                    onClick={() => handleImageClick("assets/img/ab640.png", '', 1)}  >
                                 <Image id="abModal" src="assets/img/ab.PNG" rounded className="img-fluid"  />
                             </Carousel.Item>
-                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#noobModal"
-                                    onClick={() => handleImageClick("assets/img/noob640.png")}  >
+                            <Carousel.Item data-bs-toggle="modal" data-bs-target="#noobModal" interval={null}
+                                    onClick={() => handleImageClick("assets/img/noob640.png", '', 2)}  >
                                 <Image id="noobModal" src="assets/img/noob.png" rounded className="img-fluid"  />
                             </Carousel.Item>
                             </Carousel>
@@ -191,19 +191,19 @@ export const MainPage = () => {
                             <Row >
                                 <Col>
                                 <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#martaModal"
-                                    onClick={() => handleImageClick("assets/img/marta640.PNG")}>
+                                    onClick={() => handleImageClick("assets/img/marta640.PNG", '', 0)}>
                                     <Image id="martaModal" src="assets/img/marta1.PNG" rounded className="img-fluid" />
                                 </div>
                                 </Col>
                                 <Col>
                                 <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#abModal"
-                                    onClick={() => handleImageClick("assets/img/ab640.png")}>
+                                    onClick={() => handleImageClick("assets/img/ab640.png", '', 1)}>
                                     <Image id="abModal" src="assets/img/ab.PNG" rounded className="img-fluid"/>
                                 </div>
                                 </Col>
                                 <Col>
                                 <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#noobModal"
-                                    onClick={() => handleImageClick("assets/img/noob640.png")}>
+                                    onClick={() => handleImageClick("assets/img/noob640.png", '', 2)}>
                                     <Image id="noobModal" src="assets/img/noob.png" rounded className="img-fluid"/>
                                 </div>
                                 </Col>
@@ -239,6 +239,7 @@ export const MainPage = () => {
         onHide={() => setModalShow(false)}
          src={selectedImage?.src}
         alt={selectedImage?.alt}
+        ind={selectedImage?.ind}
         isMobile={isMobile}
       />
     </Row>

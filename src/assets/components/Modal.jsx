@@ -3,10 +3,27 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-
+import Carousel from 'react-bootstrap/Carousel';
+import { useEffect, useState } from 'react';
 
 export function ShowModal(props) {
-    const { src, isMobile, ...modalProps } = props
+    const { src, isMobile, ind, ...modalProps } = props
+    
+    const [index, setIndex] = useState();
+
+    useEffect(() => {
+      if (ind === ind)
+      setIndex(ind);
+    }, [ind]);
+
+    
+    const handleSelect = (selectedIndex) => {
+      setIndex(selectedIndex)
+      console.log(`selectedIndex: ${selectedIndex}`)
+      console.log(`ind: ${ind}`)
+      console.log(`index: ${index}`) 
+    }
+
     if (src === 'contact'){
       return (
       <Modal
@@ -44,13 +61,34 @@ export function ShowModal(props) {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        
       >
         
         <Modal.Body>
             {isMobile ? (
-          <Image src={src} rounded fluid/>
+              <Carousel activeIndex={index} onSelect={handleSelect} interval={null} slide={false}> 
+                        <Carousel.Item>
+                            <Image id="martaModal" src="assets/img/marta640.PNG" rounded fluid  />
+                        </Carousel.Item >
+                        <Carousel.Item >
+                            <Image id="abModal" src="assets/img/ab640.png" rounded fluid  />
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <Image id="noobModal" src="assets/img/noob640.png" rounded fluid />
+                        </Carousel.Item>
+              </Carousel>
             ) : (
-                <Image src={src} rounded/>
+                <Carousel activeIndex={index} onSelect={handleSelect} interval={null} slide={false}>
+                            <Carousel.Item >
+                                <Image id="martaModal" src="assets/img/marta640.PNG" rounded   />
+                            </Carousel.Item>
+                            <Carousel.Item >
+                                <Image id="abModal" src="assets/img/ab640.png" rounded   />
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <Image id="noobModal" src="assets/img/noob640.png" rounded  />
+                            </Carousel.Item>
+                </Carousel>
             )}
         </Modal.Body>
       </Modal>
