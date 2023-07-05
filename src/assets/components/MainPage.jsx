@@ -11,6 +11,8 @@ import Tabs from 'react-bootstrap/Tabs';
 import YouTube from 'react-youtube';
 
 
+
+
 export const MainPage = () => {
     const [modalShow, setModalShow] = React.useState(false);
     const [selectedImage, setSelectedImage] = React.useState(null);
@@ -33,24 +35,31 @@ export const MainPage = () => {
         window.removeEventListener('resize', handleResize);
       };
     }, [])
-
-    function goToHome() {
-        // Realiza la acción deseada al hacer clic en el div
-        window.location.href = "http://localhost:5173/"; // Redirige a la página de inicio
-      }
-
+    let contentWidth = '90%'
+    let contentMargin = '3em'
+    let contentAlign = 'left'
+    if (isMobile){
+        contentAlign = 'center'
+        contentMargin = '0em'
+        contentWidth = '100%'
+    }else{
+        contentAlign = 'left'
+        contentMargin = 'auto'
+        contentWidth = '90%'
+    }
   return (
 <>
     
     <Container className='main-frame introMainPage'
-                style={{ backgroundColor:'#1f04596f',
+                style={{ backgroundColor:'#1f04594f',
                 maxWidth: '960px',
                 minHeight: '100vh',
-                padding: '2rem',
-                borderColor:'#F2D64B',
-                borderWidth:'0.25em',
+                
+                padding: '1rem',
+                // borderColor:'#F2D64B',
+                // borderWidth:'0.25em',
                 borderRadius: '2em',
-                borderStyle:'solid'
+                // borderStyle:'solid'
                 }}>
         {/* <NavBar /> */}
             <Col>
@@ -61,7 +70,7 @@ export const MainPage = () => {
                 </Row>
                 <div  className='contentFrame' >
                     <Row>
-                        <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse'}}>About Me</h1>
+                        <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse', fontSize:'1.5em'}}>About Me</h1>
                     </Row>
                     <Row className='about-me'>
                         <h5 style={{color:'white'}}>
@@ -79,51 +88,51 @@ export const MainPage = () => {
                 className="mb-3"
                 justify
                 >
-                <Tab eventKey="home" title="My Profile" style={{ textAlign: 'left', color: 'white', width: '90%', margin:'auto' }}>
-                    <Row>
+                <Tab eventKey="home" title="My Profile" style={{ textAlign: contentAlign, color: 'white', width: contentWidth, margin:'auto' }}>
+                    <Row style={{marginBottom:'1em'}}>
                         <h1>Experience</h1>
                     </Row>
-                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
+                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
                         <h5>
                             Web developer - Freelance (2023)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em'}}>
+                    <Row style={{width: contentWidth, marginLeft: contentMargin, marginBottom:'1em'}}>
                         <h6>
                         · Development and maintenance of websites. <br />
                         · Use of Javascript, Typescript, React.js
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
+                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
                         <h5>
                             Developing of videogames in Unity (2023)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em'}}>
+                    <Row style={{width: contentWidth, marginLeft: contentMargin, marginBottom:'1em'}}>
                         <h6>
                         · Development in C#, implementation of interfaces, <br/> use of
                         GitHub and creation of assets.
 
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
+                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
                         <h5>
                         Technical support and customer service (2021-2022)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em'}}>
+                    <Row style={{width: contentWidth, marginLeft: contentMargin, marginBottom:'1em'}}>
                         <h6>
                         · Incident management and database management. <br/>
                         · Web development and graphic design. <br/>
                         · Teamwork.
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
+                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
                         <h5>
                         Manager - El Baúl Gráfico (2015-2019)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em'}}>
+                    <Row style={{width: contentWidth, marginLeft: contentMargin, marginBottom:'1em'}}>
                         <h6>
                         · Graphic and textile printing, logo design, signage, and
                             event services. <br/>
@@ -131,21 +140,21 @@ export const MainPage = () => {
                             machinery.
                         </h6>
                     </Row>
-                    <Row style={{width: '90%', color:'#F2D64B', margin:'auto' }}>
+                    <Row style={{width: contentWidth, color:'#F2D64B', margin: contentMargin }}>
                         <h5>
                         Application Developer (Internship)
                         </h5>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em'}}>
+                    <Row style={{width: contentWidth, marginLeft: contentMargin, marginBottom:'1em'}}>
                         <h6>
                         · Generation of forms, reports, and Excel handling <br/>
                         · Development of applications with Visual Basic and .NET.
                         </h6>
                     </Row>
-                    <Row>
+                    <Row >
                         <h1>Education</h1>
                     </Row>
-                    <Row style={{width: '90%', marginLeft:'3em'}}>
+                    <Row style={{width: contentWidth, marginLeft: contentMargin}}>
                         <h6>
                         · D.A.I Development of computer applications. (2012) <br/>
                         I.E.S Martín Rivero.
@@ -157,7 +166,7 @@ export const MainPage = () => {
 
 
                 <Tab eventKey="profile" title="My Hobbies">
-                <h1 style={{paddingBottom:'1em'}}>
+                <h1 style={{paddingBottom:'0.5em'}}>
                             Vector Illustration
                         </h1>
                     <Row className='thumbnails'>
@@ -165,16 +174,16 @@ export const MainPage = () => {
                         {isMobile ? (
                             <Carousel>
                             <Carousel.Item data-bs-toggle="modal" data-bs-target="#martaModal"
-                                    onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}  >
-                                <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid"  />
+                                    onClick={() => handleImageClick("assets/img/marta640.PNG")}  >
+                                <Image id="martaModal" src="assets/img/marta1.PNG" rounded className="img-fluid"  />
                             </Carousel.Item>
                             <Carousel.Item data-bs-toggle="modal" data-bs-target="#abModal"
-                                    onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}  >
-                                <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded className="img-fluid"  />
+                                    onClick={() => handleImageClick("assets/img/ab640.png")}  >
+                                <Image id="abModal" src="assets/img/ab.PNG" rounded className="img-fluid"  />
                             </Carousel.Item>
                             <Carousel.Item data-bs-toggle="modal" data-bs-target="#noobModal"
-                                    onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}  >
-                                <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded className="img-fluid"  />
+                                    onClick={() => handleImageClick("assets/img/noob640.png")}  >
+                                <Image id="noobModal" src="assets/img/noob.png" rounded className="img-fluid"  />
                             </Carousel.Item>
                             </Carousel>
                         ) : (
@@ -182,20 +191,20 @@ export const MainPage = () => {
                             <Row >
                                 <Col>
                                 <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#martaModal"
-                                    onClick={() => handleImageClick("src/assets/img/vector/640/marta640.PNG", "Netherworld Queen")}>
-                                    <Image id="martaModal" src="src/assets/img/vector/marta1.PNG" alt='First' rounded className="img-fluid" />
+                                    onClick={() => handleImageClick("assets/img/marta640.PNG")}>
+                                    <Image id="martaModal" src="assets/img/marta1.PNG" rounded className="img-fluid" />
                                 </div>
                                 </Col>
                                 <Col>
                                 <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#abModal"
-                                    onClick={() => handleImageClick("src/assets/img/vector/640/ab640.PNG", "Woman with flower")}>
-                                    <Image id="abModal" src="src/assets/img/vector/ab.PNG" alt='Second' rounded className="img-fluid"/>
+                                    onClick={() => handleImageClick("assets/img/ab640.png")}>
+                                    <Image id="abModal" src="assets/img/ab.PNG" rounded className="img-fluid"/>
                                 </div>
                                 </Col>
                                 <Col>
                                 <div className="image-wrapper" data-bs-toggle="modal" data-bs-target="#noobModal"
-                                    onClick={() => handleImageClick("src/assets/img/vector/640/noob640.png", "Noob-Saibot NEON")}>
-                                    <Image id="noobModal" src="src/assets/img/vector/noob.png" alt='Noob-Saibot NEON' rounded className="img-fluid"/>
+                                    onClick={() => handleImageClick("assets/img/noob640.png")}>
+                                    <Image id="noobModal" src="assets/img/noob.png" rounded className="img-fluid"/>
                                 </div>
                                 </Col>
                             </Row>
@@ -205,13 +214,13 @@ export const MainPage = () => {
 
                         </div>
                     </Row>
-                        <h1 style={{paddingTop:'1em'}}>
+                        {/* <h1 style={{paddingTop:'1em'}}>
                             Drone footage
                         </h1>
                     <Row style={{padding:'2em'}}>
                         
                         <YouTube videoId="https://www.youtube.com/watch?v=gyDIBpEuYQc" width={640} height={360} />
-                    </Row>
+                    </Row> */}
                 </Tab>
                 <Tab eventKey="contact" title="Contact">
                     <Row className="formButton">

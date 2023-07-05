@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 
 
 export function ShowModal(props) {
-    const { src, alt, isMobile, ...modalProps } = props
+    const { src, isMobile, ...modalProps } = props
     if (src === 'contact'){
       return (
       <Modal
@@ -30,7 +30,7 @@ export function ShowModal(props) {
           <Form.Label>Message</Form.Label>
           <Form.Control as="textarea" rows={3} />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="Secondary" type="submit">
           Submit
         </Button>
       </Form>
@@ -45,16 +45,12 @@ export function ShowModal(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            {alt}
-          </Modal.Title>
-        </Modal.Header>
+        
         <Modal.Body>
             {isMobile ? (
-          <Image src={src} alt={alt} rounded fluid/>
+          <Image src={src} rounded fluid/>
             ) : (
-                <Image src={src} alt={alt} rounded/>
+                <Image src={src} rounded/>
             )}
         </Modal.Body>
       </Modal>
