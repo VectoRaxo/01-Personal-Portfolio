@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @font-face {
   font-family: 'Montse';
-  src: url('./fonts/Montserrat-Medium.ttf') format('truetype');
+  src: url('./fonts/Montserrat-Bold.ttf') format('truetype');
 }
+
 
 :root {
   font-family:Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -51,7 +52,7 @@
   .main-title{
     position: relative;
     padding-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     font-size: 0.8rem;
     pointer-events: none;
   }
@@ -70,7 +71,7 @@
     position: relative;
   }
   .about-me h5{
-    font-size: 1em;
+    font-size: 1rem;
   }
   .footerContainer{
     /* width: 100% !important;
@@ -112,7 +113,7 @@
 /* Estilos para pantallas medianas (de 601px a 900px de ancho) */
 @media (min-width: 601px) and (max-width: 900px) {
   
- 
+  
   .main-frame{
     position: relative;
     opacity: 0;
@@ -120,6 +121,10 @@
     min-height: 100%;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 20px 10px;
+  }
+  .avatar{
+    padding-top: '2em' !important;
   }
   .main-title{
     position: relative;
@@ -186,8 +191,10 @@
   .about-me{  
     position: relative;
     padding: 1em;
+  }  
+  .about-me h5{
+    font-size: 1.25rem;
   }
-  
   .thumbnails{  
     position: relative;
     margin-left: auto;
@@ -225,10 +232,6 @@
   }
   
   .contact-modal-content .modal-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     min-width: 640px;
   }
   .formContact{
@@ -361,7 +364,7 @@ body {
 
 body {
   background-color: #1F0459;
-  background-image: url(assets/img/soft.jpg);
+  background-image: url(img/soft.jpg);
   background-size: cover;
   background-attachment: fixed;
   min-width: fit-content;

@@ -6,9 +6,9 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import { ShowModal } from "./Modal";
 import { NavBar } from './NavBar';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import YouTube from 'react-youtube';
+// import Tab from 'react-bootstrap/Tab';
+// import Tabs from 'react-bootstrap/Tabs';
+// import YouTube from 'react-youtube';
 
 
 
@@ -38,18 +38,26 @@ export const MainPage = () => {
     let contentWidth = '90%'
     let contentMargin = '3em'
     let contentAlign = 'left'
+    let avatarWidth = '120px'
+    let avatarPadding = '3em'
+    
     if (isMobile){
         contentAlign = 'center'
         contentMargin = '0em'
         contentWidth = '100%'
+        avatarWidth = '160px'
+        avatarPadding = '3em'
     }else{
         contentAlign = 'left'
         contentMargin = 'auto'
         contentWidth = '90%'
+        avatarWidth = '240px'
+        avatarPadding = '2em'
     }
   return (
 <>
-    
+                
+                
     <Container className='main-frame introMainPage'
                 style={{ backgroundColor:'#1f04594f',
                 maxWidth: '960px',
@@ -60,14 +68,16 @@ export const MainPage = () => {
                 borderRadius: '2em',
                 // borderStyle:'solid'
                 }}>
-        {/* <NavBar /> */}
-            <Col>
-                <Row>
+        <NavBar />
+            <Col style={{paddingTop:avatarPadding}}>
+            <Row>
                     <div className='main-title'>
-                    <h1 style={{fontFamily:'Montse'}}>JULIAN ALBERTI</h1>
+                    <h1 style={{fontFamily:'Montse', color:'#F2D64B'}}>JULIAN ALBERTI</h1>
+                    <h6 style={{color:'white'}}>Web developer - Graphic artist</h6>
                     </div>
                 </Row>
                 <div  className='contentFrame' >
+                
                     <Row>
                         <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse', fontSize:'1.5em'}}>About Me</h1>
                     </Row>
@@ -79,16 +89,17 @@ export const MainPage = () => {
                     </Row>
                 </div>
             </Col>
-            <Container fluid="xs" style={{ marginTop:'1em'}}>
-                <Tabs
+            <Container fluid="xs" style={{ marginTop:'1em'}} >
+                {/* <Tabs
                 id="justify-tab-example"
                 activeKey={key}
                 onSelect={(k) => setKey(k)}
                 className="mb-3"
                 justify
                 >
-                <Tab eventKey="home" title="My Profile" style={{ textAlign: contentAlign, color: 'white', width: contentWidth, margin:'auto' }}>
-                    <Row style={{marginBottom:'1em'}}>
+                <Tab eventKey="home" title="My Profile" style={{ textAlign: contentAlign, color: 'white', width: contentWidth, margin:'auto' }}> */}
+                <Container className='contentFrame' style={{padding:'2em', textAlign: contentAlign, color: 'white', width:'90%', margin:'auto' }}>
+                    <Row style={{marginBottom:'1em', fontFamily:'Montse'}}>
                         <h1>Experience</h1>
                     </Row>
                     <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
@@ -150,7 +161,7 @@ export const MainPage = () => {
                         · Development of applications with Visual Basic and .NET.
                         </h6>
                     </Row>
-                    <Row >
+                    <Row style={{fontFamily:'Montse'}}>
                         <h1>Education</h1>
                     </Row>
                     <Row style={{width: contentWidth, marginLeft: contentMargin}}>
@@ -160,12 +171,11 @@ export const MainPage = () => {
                         </h6>
                     </Row>
                     
-                    
-                </Tab>
-
-
-                <Tab eventKey="profile" title="My Hobbies">
-                <h1 style={{paddingBottom:'0.5em'}}>
+                </Container>    
+                {/* </Tab>
+                <Tab eventKey="profile" title="My Hobbies"> */}
+                <Container className='contentFrame' style={{padding:'2em', width:'90%', marginTop:'1em' }}>
+                <h1 style={{paddingBottom:'0.5em', fontFamily:'Montse'}}>
                             Vector Illustration
                         </h1>
                     <Row className='thumbnails'>
@@ -220,8 +230,10 @@ export const MainPage = () => {
                         
                         <YouTube videoId="https://www.youtube.com/watch?v=gyDIBpEuYQc" width={640} height={360} />
                     </Row> */}
-                </Tab>
-                <Tab eventKey="contact" title="Contact">
+                </Container>
+                {/* </Tab>
+                <Tab eventKey="contact" title="Contact"> */}
+                <Container className='contentFrame' style={{padding:'2em', width:'90%', marginTop:'1em' }}>
                     <Row className="formButton">
                         <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleImageClick('contact')}>
                         <a className="btn btn-xl btn-outline-light" id='contactModal'>
@@ -229,8 +241,9 @@ export const MainPage = () => {
                         </a>
                         </div>
                     </Row>
-                </Tab>
-                </Tabs> 
+                {/* </Tab>
+                </Tabs>  */}
+                </Container>
         </Container>
     <Row>
         <ShowModal
