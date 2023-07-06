@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import { ShowModal } from "./Modal";
 import { NavBar } from './NavBar';
+import { Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 // import Tab from 'react-bootstrap/Tab';
 // import Tabs from 'react-bootstrap/Tabs';
 // import YouTube from 'react-youtube';
@@ -57,8 +59,8 @@ export const MainPage = () => {
   return (
 <>
                 
-                
-    <Container className='main-frame introMainPage'
+<BrowserRouter> 
+    <Container className='main-frame introMainPage' id='about-me'
                 style={{ backgroundColor:'#1f04594f',
                 maxWidth: '960px',
                 minHeight: '100vh',
@@ -71,9 +73,9 @@ export const MainPage = () => {
         <NavBar />
             <Col style={{paddingTop:avatarPadding}}>
             <Row>
-                    <div className='main-title'>
+                    <div className='main-title' >
                     <h1 style={{fontFamily:'Montse', color:'#F2D64B'}}>JULIAN ALBERTI</h1>
-                    <h6 style={{color:'white'}}>Web developer - Graphic artist</h6>
+                    <h6  style={{color:'white'}}>Web developer - Graphic artist</h6>
                     </div>
                 </Row>
                 <div  className='contentFrame' >
@@ -81,8 +83,8 @@ export const MainPage = () => {
                     <Row>
                         <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse', fontSize:'1.5em'}}>About Me</h1>
                     </Row>
-                    <Row className='about-me'>
-                        <h5 style={{color:'white'}}>
+                    <Row className='about-me' >
+                        <h5 style={{color:'white'}} id='other-stuff'>
                         I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
                         I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
                         </h5>
@@ -98,7 +100,7 @@ export const MainPage = () => {
                 justify
                 >
                 <Tab eventKey="home" title="My Profile" style={{ textAlign: contentAlign, color: 'white', width: contentWidth, margin:'auto' }}> */}
-                <Container className='contentFrame' style={{padding:'2em', textAlign: contentAlign, color: 'white', width:'90%', margin:'auto' }}>
+                <Container className='contentFrame'  style={{padding:'2em', textAlign: contentAlign, color: 'white', width:'90%', margin:'auto' }}>
                     <Row style={{marginBottom:'1em', fontFamily:'Montse'}}>
                         <h1>Experience</h1>
                     </Row>
@@ -233,7 +235,7 @@ export const MainPage = () => {
                 </Container>
                 {/* </Tab>
                 <Tab eventKey="contact" title="Contact"> */}
-                <Container className='contentFrame' style={{padding:'2em', width:'90%', marginTop:'1em' }}>
+                <Container className='contentFrame' id='contact' style={{padding:'2em', width:'90%', marginTop:'1em' }}>
                     <Row className="formButton">
                         <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleImageClick('contact')}>
                         <a className="btn btn-xl btn-outline-light" id='contactModal'>
@@ -285,29 +287,31 @@ export const MainPage = () => {
                 color:'#F2D64B',
                 }}>
                 <h5>AROUND THE WEB</h5>
+                <Link to="https://www.linkedin.com/in/juli%C3%A1n-alberti-vargas-122651238/" target="_blank"> 
                 <Container style={{color:'white'}}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="svgIcons" width="48" height="48" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" ></path>
                     <path d="M8 11l0 5"></path>
                     <path d="M8 8l0 .01"></path>
                     <path d="M12 16l0 -5"></path>
                     <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
                 </svg>
                 </Container>
+                 </Link>
             </Col>
-            {/* <Col style={{display:'flex',
+            <Col style={{display:'flex',
                 flexDirection:'column',
                 contentAlign:'center',
                 color:'#F2D64B',
                 }}>
-                <h6>By me - 2023 <br /> Still under construction :D</h6>
-            </Col> */}
+                <h6>By me - 2023 <br />Under construction</h6>
+            </Col>
         </Container>
         
     </Row>
     </Container>
-        
+    </BrowserRouter>
   </>
 )
 

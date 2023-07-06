@@ -364,7 +364,7 @@ body {
 
 body {
   background-color: #1F0459;
-  background-image: url(img/soft.jpg);
+  background-image: url(assets/img/soft.jpg);
   background-size: cover;
   background-attachment: fixed;
   min-width: fit-content;

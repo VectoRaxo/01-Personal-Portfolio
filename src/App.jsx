@@ -16,7 +16,6 @@ function App() {
     const [animationCompleted, setAnimationCompleted] = useState(false);
    
     useEffect(() => {
-      
       const handleAnimationEnd = () => {
         setAnimationCompleted(false)
       }
