@@ -54,8 +54,7 @@ export const MainPage = () => {
                 style={{ backgroundColor:'#1f04594f',
                 maxWidth: '960px',
                 minHeight: '100vh',
-                
-                padding: '1rem',
+                // padding: '1rem',
                 // borderColor:'#F2D64B',
                 // borderWidth:'0.25em',
                 borderRadius: '2em',
@@ -243,20 +242,59 @@ export const MainPage = () => {
         isMobile={isMobile}
       />
     </Row>
+    <Row>
+        <Container className='footerContainer'
+            style={{display:'flex',
+                justifyContent:'center',
+                contentAlign:'center',
+                textAlign:'center',
+                margin:'1em auto',
+                width:'75%',
+                padding:'1em',
+                borderStyle:'solid',
+                backgroundColor:'#1f04592f',
+                borderColor:'#f2d64b60',
+                borderRadius:'2em'
+                }}>
+            <Col style={{display:'flex',
+                flexDirection:'column',
+                contentAlign:'center',
+                color:'#F2D64B',
+                
+                }}>
+                <h5>LOCATION</h5>
+                <h6 style={{color:'white'}}>Malaga - Spain <br /> (29003)</h6>
+
+            </Col>
+            <Col style={{display:'flex',
+                flexDirection:'column',
+                contentAlign:'center',
+                color:'#F2D64B',
+                }}>
+                <h5>AROUND THE WEB</h5>
+                <Container style={{color:'white'}}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="svgIcons" width="48" height="48" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                    <path d="M8 11l0 5"></path>
+                    <path d="M8 8l0 .01"></path>
+                    <path d="M12 16l0 -5"></path>
+                    <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+                </svg>
+                </Container>
+            </Col>
+            {/* <Col style={{display:'flex',
+                flexDirection:'column',
+                contentAlign:'center',
+                color:'#F2D64B',
+                }}>
+                <h6>By me - 2023 <br /> Still under construction :D</h6>
+            </Col> */}
+        </Container>
+        
+    </Row>
     </Container>
-        {/* <footer>
-            <Container
-                style={{position:'absolute',
-                backgroundColor:'black',
-                width:'100vw',
-                color:'white',
-                marginLeft:'auto',
-                marginRight:'auto'}}>
-                <Col>
-                    Contact!
-                </Col>
-            </Container>
-        </footer> */}
+        
   </>
 )
 
