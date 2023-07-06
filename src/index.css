@@ -236,6 +236,8 @@
   }
   .formContact{
     width: 40em;
+    margin-left: auto;
+    margin-right: auto;
   }
   .formButton{
     width: fit-content;

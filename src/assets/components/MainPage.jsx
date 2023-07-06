@@ -4,6 +4,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { ShowModal } from "./Modal";
 import { NavBar } from './NavBar';
 import { Link } from 'react-router-dom';
@@ -233,19 +235,39 @@ export const MainPage = () => {
                         <YouTube videoId="https://www.youtube.com/watch?v=gyDIBpEuYQc" width={640} height={360} />
                     </Row> */}
                 </Container>
+
+
                 {/* </Tab>
                 <Tab eventKey="contact" title="Contact"> */}
-                <Container className='contentFrame' id='contact' style={{padding:'2em', width:'90%', marginTop:'1em' }}>
-                    <Row className="formButton">
+                <Container className='contentFrame' id='contact' style={{padding:'2em', width:'90%', marginTop:'1em', color:'#F2D64B' }}>
+                <Form className='formContact' name="contact" data-netlify="true">
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="name@example.com" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Message</Form.Label>
+                    <Form.Control as="textarea" rows={3} />
+                    </Form.Group>
+                    <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleImageClick('contact')}>
+                    <Button variant="outline-warning" id='contactModal' >
+                    Submit
+                    </Button>
+                    </div>
+                </Form>
+                    
+                    
+                    {/* <Row className="formButton">
                         <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleImageClick('contact')}>
                         <a className="btn btn-xl btn-outline-light" id='contactModal'>
                             Contact me!
                         </a>
                         </div>
-                    </Row>
+                    </Row> */}
+                    </Container>
                 {/* </Tab>
                 </Tabs>  */}
-                </Container>
+                
         </Container>
     <Row>
         <ShowModal

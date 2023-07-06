@@ -1,6 +1,5 @@
 
 import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
@@ -8,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 export function ShowModal(props) {
     const { src, isMobile, ind, ...modalProps } = props
+    
     
     const [index, setIndex] = useState();
 
@@ -19,9 +19,6 @@ export function ShowModal(props) {
     
     const handleSelect = (selectedIndex) => {
       setIndex(selectedIndex)
-      console.log(`selectedIndex: ${selectedIndex}`)
-      console.log(`ind: ${ind}`)
-      console.log(`index: ${index}`) 
     }
 
     if (src === 'contact'){
@@ -35,23 +32,18 @@ export function ShowModal(props) {
       >
         <Modal.Header closeButton>
       <Modal.Title id="contained-modal-title-vcenter">
-        Contact me!
+        *UNDER CONSTRUCTION* <br />
+        Click outside :D
       </Modal.Title>
     </Modal.Header>
+      <Modal.Footer>
+      <Button variant="secondary" >
+            Close
+          </Button>
+          <Button variant="primary" >Understood</Button>
+          </ Modal.Footer>
     <Modal.Body>
-      <Form className='formContact' name="contact" data-netlify="true">
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows={3} />
-        </Form.Group>
-        <Button variant="Secondary" type="submit">
-          Submit
-        </Button>
-      </Form>
+      
     </Modal.Body>
   </Modal>
       )
