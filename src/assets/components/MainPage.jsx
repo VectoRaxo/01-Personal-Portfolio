@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { ShowModal } from "./Modal";
+import { FormModal, ShowModal } from "./Modal";
 import { NavBar } from './NavBar';
 import { Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -19,7 +19,9 @@ import YouTube from 'react-youtube';
 
 export const MainPage = () => {
     const [modalShow, setModalShow] = useState(false);
+    const [modalFormShow, setModalFormShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [formContent, setFormContent] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const videoId = 'gyDIBpEuYQc'
 
@@ -42,6 +44,10 @@ export const MainPage = () => {
       setSelectedImage({ src, alt, ind });
       setModalShow(true);
     };
+    const handleFormClick = (email, msg) => {
+        setFormContent({email, msg})
+        setModalFormShow(true);
+    }
 
     useEffect(() => {
       const handleResize = () => {
@@ -242,7 +248,7 @@ export const MainPage = () => {
 
                         </div>
                     </Row>
-                        <h1 style={{paddingTop:'1em'}}>
+                        <h1 style={{paddingTop:'1em', fontFamily:'Montse'}}>
                             Drone footage
                         </h1>
                     <Row style={{padding:'1em'}} >
@@ -254,6 +260,9 @@ export const MainPage = () => {
                 {/* </Tab>
                 <Tab eventKey="contact" title="Contact"> */}
                 <Container className='contentFrame' id='contact' style={{padding:'2em', width:'90%', marginTop:'1em', color:'#F2D64B' }}>
+                    <h1 style={{fontFamily:'Montse'}}>
+                            Contact me
+                        </h1>
                 <Form className='formContact' name="contact" data-netlify="true">
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Email address</Form.Label>
@@ -263,8 +272,8 @@ export const MainPage = () => {
                     <Form.Label>Message</Form.Label>
                     <Form.Control as="textarea" rows={3} />
                     </Form.Group>
-                    <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleImageClick('contact')}>
-                    <Button variant="outline-warning" id='contactModal' >
+                    <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleFormClick('hola@hola.com', 'quiero bailar contigo')}>
+                    <Button  variant="outline-warning" id='contactModal' >
                     Submit
                     </Button>
                     </div>
@@ -284,10 +293,14 @@ export const MainPage = () => {
                 
         </Container>
     <Row>
+        <FormModal
+        show={modalFormShow}
+        onHide={() => setModalFormShow(false)}
+        />       
         <ShowModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-         src={selectedImage?.src}
+        src={selectedImage?.src}
         alt={selectedImage?.alt}
         ind={selectedImage?.ind}
         isMobile={isMobile}

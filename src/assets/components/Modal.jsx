@@ -5,49 +5,60 @@ import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 import { useEffect, useState } from 'react';
 
-export function ShowModal(props) {
-    const { src, isMobile, ind, ...modalProps } = props
+
+
+export function FormModal(props) {
+  const {onHide,  ...modalProps } = props
+  
+  const sendForm = (confirm) => {
+    if (confirm){
+      console.log('gracias por contactar')
+      // aquí iría la parte del back (??)
+    }
+    onHide()
+  }
+  return (
+    <Modal
+      {...modalProps}
+      onHide={confirm}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      className='contact-modal-content'
+    >
+      <Modal.Header closeButton>
+    <Modal.Title id="contained-modal-title-vcenter">
+      *UNDER CONSTRUCTION* <br />
+      Click outside :D
+    </Modal.Title>
+  </Modal.Header>
+    <Modal.Footer>
+    <Button variant="secondary" type='submit' onClick={() => sendForm(false)} >
+          Close
+        </Button>
+        <Button variant="primary" type='submit' onClick={() => sendForm(true)}>Understood</Button>
+        </ Modal.Footer>
+  <Modal.Body>
     
+  </Modal.Body>
+</Modal>
+    )
+}
+export function ShowModal(props) {
+    const { src, isMobile, ind,  ...modalProps } = props
     
     const [index, setIndex] = useState();
-
+    
     useEffect(() => {
       if (ind === ind)
       setIndex(ind);
     }, [ind]);
 
-    
     const handleSelect = (selectedIndex) => {
       setIndex(selectedIndex)
     }
 
-    if (src === 'contact'){
-      return (
-      <Modal
-        {...modalProps}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        className='contact-modal-content'
-      >
-        <Modal.Header closeButton>
-      <Modal.Title id="contained-modal-title-vcenter">
-        *UNDER CONSTRUCTION* <br />
-        Click outside :D
-      </Modal.Title>
-    </Modal.Header>
-      <Modal.Footer>
-      <Button variant="secondary" >
-            Close
-          </Button>
-          <Button variant="primary" >Understood</Button>
-          </ Modal.Footer>
-    <Modal.Body>
-      
-    </Modal.Body>
-  </Modal>
-      )
-    }
+    
     return (
       <Modal
         {...modalProps}
