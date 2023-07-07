@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import  {useState, useEffect} from 'react'
 import Container from 'react-bootstrap/Container';
 import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 // import Tab from 'react-bootstrap/Tab';
 // import Tabs from 'react-bootstrap/Tabs';
-// import YouTube from 'react-youtube';
+import YouTube from 'react-youtube';
 
 
 
@@ -21,8 +21,23 @@ export const MainPage = () => {
     const [modalShow, setModalShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
-    const [key, setKey] = useState('home');
+    const videoId = 'gyDIBpEuYQc'
 
+    let videoHeight = '360'
+    let videoWidth = '640'
+    
+    if (isMobile){
+        videoHeight = '135'
+        videoWidth = '240'
+    }
+    const opts = {
+        height: videoHeight,
+        width: videoWidth,
+        playerVars: {
+          autoplay: 0,
+        },
+      };
+    
     const handleImageClick = (src, alt, ind) => {
       setSelectedImage({ src, alt, ind });
       setModalShow(true);
@@ -42,20 +57,20 @@ export const MainPage = () => {
     let contentWidth = '90%'
     let contentMargin = '3em'
     let contentAlign = 'left'
-    let avatarWidth = '120px'
+    // let avatarWidth = '120px'
     let avatarPadding = '3em'
     
     if (isMobile){
         contentAlign = 'center'
         contentMargin = '0em'
         contentWidth = '100%'
-        avatarWidth = '160px'
+        // avatarWidth = '160px'
         avatarPadding = '3em'
     }else{
         contentAlign = 'left'
         contentMargin = 'auto'
         contentWidth = '90%'
-        avatarWidth = '240px'
+        // avatarWidth = '240px'
         avatarPadding = '2em'
     }
   return (
@@ -227,13 +242,12 @@ export const MainPage = () => {
 
                         </div>
                     </Row>
-                        {/* <h1 style={{paddingTop:'1em'}}>
+                        <h1 style={{paddingTop:'1em'}}>
                             Drone footage
                         </h1>
-                    <Row style={{padding:'2em'}}>
-                        
-                        <YouTube videoId="https://www.youtube.com/watch?v=gyDIBpEuYQc" width={640} height={360} />
-                    </Row> */}
+                    <Row style={{padding:'2em'}} >
+                        <YouTube videoId={videoId} opts={opts} />
+                    </Row>
                 </Container>
 
 
