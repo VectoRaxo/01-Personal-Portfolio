@@ -245,7 +245,7 @@ export const MainPage = () => {
                         <h1 style={{paddingTop:'1em'}}>
                             Drone footage
                         </h1>
-                    <Row style={{padding:'2em'}} >
+                    <Row style={{padding:'1em'}} >
                         <YouTube videoId={videoId} opts={opts} />
                     </Row>
                 </Container>
