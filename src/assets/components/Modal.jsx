@@ -8,11 +8,11 @@ import { useEffect, useState } from 'react';
 
 
 export function FormModal(props) {
-  const {onHide,  ...modalProps } = props
+  const {onHide, contactInfo,  ...modalProps } = props
   
   const sendForm = (confirm) => {
     if (confirm){
-      console.log('gracias por contactar')
+      console.log(contactInfo)
       // aquí iría la parte del back (??)
     }
     onHide()
@@ -20,23 +20,21 @@ export function FormModal(props) {
   return (
     <Modal
       {...modalProps}
-      onHide={confirm}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
       className='contact-modal-content'
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
     <Modal.Title id="contained-modal-title-vcenter">
       *UNDER CONSTRUCTION* <br />
-      Click outside :D
     </Modal.Title>
   </Modal.Header>
     <Modal.Footer>
     <Button variant="secondary" type='submit' onClick={() => sendForm(false)} >
-          Close
+          Cancel
         </Button>
-        <Button variant="primary" type='submit' onClick={() => sendForm(true)}>Understood</Button>
+        <Button variant="primary" type='submit' onClick={() => sendForm(true)}>Confirm</Button>
         </ Modal.Footer>
   <Modal.Body>
     
@@ -45,7 +43,7 @@ export function FormModal(props) {
     )
 }
 export function ShowModal(props) {
-    const { src, isMobile, ind,  ...modalProps } = props
+    const { src, isMobile, isTablet, ind,  ...modalProps } = props
     
     const [index, setIndex] = useState();
     
@@ -69,7 +67,7 @@ export function ShowModal(props) {
       >
         
         <Modal.Body>
-            {isMobile ? (
+            {isMobile || isTablet ? (
               <Carousel activeIndex={index} onSelect={handleSelect} interval={null} slide={false}> 
                         <Carousel.Item>
                             <Image id="martaModal" src="assets/img/marta640.PNG" rounded fluid  />

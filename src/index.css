@@ -74,10 +74,6 @@
     font-size: 1rem;
   }
   .footerContainer{
-    /* width: 100% !important;
-    border-radius: 0 !important;
-    border-left-width: 0 !important;
-    border-right-width: 0 !important; */
     flex-direction: column !important;
   }
   .footerContainer h5{
@@ -85,7 +81,7 @@
   }
   .footerContainer h6{
     font-size: 1em;
-    color: white;
+    color: #F2D64B;
   }
   .tab-content h1{
     font-size:1.8em;
@@ -144,18 +140,25 @@
     bottom: 1em;
   }
   .thumbnails{
-    
     position: relative;
     margin-left: auto;
     margin-right: auto;
     display: block;
   }
-  
   .formButton{
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    
+  }
+  .footerContainer{
+    flex-direction: column !important;
+  }
+  .footerContainer h5{
+    font-size: calc(1.15rem + 0.3vw)
+  }
+  .footerContainer h6{
+    font-size: 1em;
+    color: #F2D64B;
   }
 
   

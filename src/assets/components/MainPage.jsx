@@ -21,16 +21,21 @@ export const MainPage = () => {
     const [modalShow, setModalShow] = useState(false);
     const [modalFormShow, setModalFormShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [formContent, setFormContent] = useState(null);
+    const [formContent, setFormContent] = useState({email: '', contact: ''});
     const [isMobile, setIsMobile] = useState(false);
+    const [isTablet, setIsTablet] = useState(false);
     const videoId = 'gyDIBpEuYQc'
 
     let videoHeight = '360'
     let videoWidth = '640'
     
     if (isMobile){
-        videoHeight = '135'
-        videoWidth = '240'
+        videoHeight = '145'
+        videoWidth = '260'
+    }
+    if (isTablet){
+        videoHeight = '240'
+        videoWidth = '480'
     }
     const opts = {
         height: videoHeight,
@@ -44,16 +49,32 @@ export const MainPage = () => {
       setSelectedImage({ src, alt, ind });
       setModalShow(true);
     };
-    const handleFormClick = (email, msg) => {
-        setFormContent({email, msg})
+    const handleFormClick = () => {
+        if (formContent.email === '' || formContent.contact === '') throw alert('E-mail & Message must have some content!')
         setModalFormShow(true);
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        setFormContent(formContent.email,formContent.contact)
+        
     }
 
     useEffect(() => {
-      const handleResize = () => {
-        const mediaQuery = window.matchMedia('(max-width: 900px)');
-        setIsMobile(mediaQuery.matches);
-      };
+        const handleResize = () => {
+            const mediaQuerySmall = window.matchMedia('(max-width: 600px)');
+            const mediaQueryMedium = window.matchMedia('(max-width: 900px)');
+            
+            if (mediaQuerySmall.matches) {
+              setIsMobile(true);
+              setIsTablet(false);
+            } else if (mediaQueryMedium.matches) {
+              setIsMobile(false);
+              setIsTablet(true);
+            } else {
+              setIsMobile(false);
+              setIsTablet(false);
+            }
+          };
       handleResize(); // Verificar el tamaño inicial de la pantalla
       window.addEventListener('resize', handleResize);
       return () => {
@@ -205,7 +226,7 @@ export const MainPage = () => {
                         </h1>
                     <Row className='thumbnails'>
                         <div>
-                        {isMobile ? (
+                        {isMobile || isTablet ? (
                             <Carousel>
                             <Carousel.Item data-bs-toggle="modal" data-bs-target="#martaModal" interval={null}
                                     onClick={() => handleImageClick("assets/img/marta640.PNG", '', 0)}  >
@@ -248,10 +269,10 @@ export const MainPage = () => {
 
                         </div>
                     </Row>
-                        <h1 style={{paddingTop:'1em', fontFamily:'Montse'}}>
+                        <h1 style={{paddingTop:'1em', paddingBottom:'0.5em', fontFamily:'Montse'}}>
                             Drone footage
                         </h1>
-                    <Row style={{padding:'1em'}} >
+                    <Row  >
                         <YouTube videoId={videoId} opts={opts} />
                     </Row>
                 </Container>
@@ -263,17 +284,21 @@ export const MainPage = () => {
                     <h1 style={{fontFamily:'Montse'}}>
                             Contact me
                         </h1>
-                <Form className='formContact' name="contact" data-netlify="true">
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form className='formContact' method='POST' name="contact" data-netlify="true" onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control type="email" name="email" placeholder="name@example.com"
+                    value={formContent.email}
+                    onChange={(e) => setFormContent({ ...formContent, email: e.target.value })}/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Group className="mb-3" controlId="contact">
                     <Form.Label>Message</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control as="textarea" rows={3} name="message"
+                    value={formContent.contact}
+                    onChange={(e) => setFormContent({ ...formContent, contact: e.target.value })}/>
                     </Form.Group>
-                    <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleFormClick('hola@hola.com', 'quiero bailar contigo')}>
-                    <Button  variant="outline-warning" id='contactModal' >
+                    <div data-bs-toggle="modal" data-bs-target="#contactModal" >
+                    <Button  variant="outline-warning" id='contactModal' onClick={() => handleFormClick()}>
                     Submit
                     </Button>
                     </div>
@@ -295,6 +320,7 @@ export const MainPage = () => {
     <Row>
         <FormModal
         show={modalFormShow}
+        contactInfo={formContent}
         onHide={() => setModalFormShow(false)}
         />       
         <ShowModal
@@ -304,6 +330,7 @@ export const MainPage = () => {
         alt={selectedImage?.alt}
         ind={selectedImage?.ind}
         isMobile={isMobile}
+        isTablet={isTablet}
       />
     </Row>
     <Row>
@@ -354,7 +381,10 @@ export const MainPage = () => {
                 contentAlign:'center',
                 color:'#F2D64B',
                 }}>
-                <h6>By me - 2023 <br />Under construction</h6>
+                <h6>By me - 2023 <br />
+                Under construction <br />
+                </h6> 
+                <h6 style={{color:'white'}}>julialberti666@gmail.com</h6>
             </Col>
         </Container>
         
