@@ -4,8 +4,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { FormModal, ShowModal } from "./Modal";
 import { NavBar } from './NavBar';
 import { Link } from 'react-router-dom';
@@ -13,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import Tab from 'react-bootstrap/Tab';
 // import Tabs from 'react-bootstrap/Tabs';
 import YouTube from 'react-youtube';
+import { ContactForm } from './Form';
 
 
 
@@ -21,7 +20,6 @@ export const MainPage = () => {
     const [modalShow, setModalShow] = useState(false);
     const [modalFormShow, setModalFormShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [formContent, setFormContent] = useState({email: '', contact: ''});
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setIsTablet] = useState(false);
     const videoId = 'gyDIBpEuYQc'
@@ -49,15 +47,7 @@ export const MainPage = () => {
       setSelectedImage({ src, alt, ind });
       setModalShow(true);
     };
-    const handleFormClick = () => {
-        if (formContent.email === '' || formContent.contact === '') throw alert('E-mail & Message must have some content!')
-        setModalFormShow(true);
-    }
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        setFormContent(formContent.email,formContent.contact)
-        
-    }
+    
 
     useEffect(() => {
         const handleResize = () => {
@@ -281,48 +271,14 @@ export const MainPage = () => {
                 {/* </Tab>
                 <Tab eventKey="contact" title="Contact"> */}
                 <Container className='contentFrame' id='contact' style={{padding:'2em', width:'90%', marginTop:'1em', color:'#F2D64B' }}>
-                    <h1 style={{fontFamily:'Montse'}}>
-                            Contact me
-                        </h1>
-                <Form className='formContact' method='POST' name="contact" data-netlify="true" onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" placeholder="name@example.com"
-                    value={formContent.email}
-                    onChange={(e) => setFormContent({ ...formContent, email: e.target.value })}/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="contact">
-                    <Form.Label>Message</Form.Label>
-                    <Form.Control as="textarea" rows={3} name="message"
-                    value={formContent.contact}
-                    onChange={(e) => setFormContent({ ...formContent, contact: e.target.value })}/>
-                    </Form.Group>
-                    <div data-bs-toggle="modal" data-bs-target="#contactModal" >
-                    <Button  variant="outline-warning" id='contactModal' onClick={() => handleFormClick()}>
-                    Submit
-                    </Button>
-                    </div>
-                </Form>
                     
-                    
-                    {/* <Row className="formButton">
-                        <div data-bs-toggle="modal" data-bs-target="#contactModal" onClick={() => handleImageClick('contact')}>
-                        <a className="btn btn-xl btn-outline-light" id='contactModal'>
-                            Contact me!
-                        </a>
-                        </div>
-                    </Row> */}
-                    </Container>
-                {/* </Tab>
-                </Tabs>  */}
+                        <ContactForm />
+                </Container>
+               
                 
         </Container>
     <Row>
-        <FormModal
-        show={modalFormShow}
-        contactInfo={formContent}
-        onHide={() => setModalFormShow(false)}
-        />       
+        
         <ShowModal
         show={modalShow}
         onHide={() => setModalShow(false)}
