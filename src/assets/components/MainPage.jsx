@@ -12,21 +12,27 @@ import { BrowserRouter } from 'react-router-dom';
 // import Tabs from 'react-bootstrap/Tabs';
 import YouTube from 'react-youtube';
 import { ContactForm } from './Form';
+import ThemeContext from './ThemeContext'
+import ThemeSwitcher from './ThemeSwitcher'
 
 
 
 
 export const MainPage = () => {
     const [modalShow, setModalShow] = useState(false);
-    const [modalFormShow, setModalFormShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setIsTablet] = useState(false);
-    const videoId = 'gyDIBpEuYQc'
+    const [theme, setTheme] = useState();
 
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  }
+    
+    // config del video (responsive)
+    const videoId = 'gyDIBpEuYQc'
     let videoHeight = '360'
     let videoWidth = '640'
-    
     if (isMobile){
         videoHeight = '145'
         videoWidth = '260'
@@ -43,6 +49,25 @@ export const MainPage = () => {
         },
       };
     
+      const themeStyles = {
+        light: {
+          color: '#F2D64B',
+        },
+        dark: {
+          color: 'white',
+        },
+      }
+
+      const themeStylesSubTitles = {
+        light: {
+          
+          color: 'white',
+        },
+        dark: {
+            color: '#F2D64B',
+        },
+      }
+
     const handleImageClick = (src, alt, ind) => {
       setSelectedImage({ src, alt, ind });
       setModalShow(true);
@@ -92,25 +117,24 @@ export const MainPage = () => {
     }
   return (
 <>
-                
+<ThemeContext.Provider value={{ theme, toggleTheme }}>    
 <BrowserRouter> 
     <Container className='main-frame introMainPage' id='about-me'
                 style={{ backgroundColor:'#1f04594f',
                 maxWidth: '960px',
                 minHeight: '100vh',
-                // padding: '1rem',
-                // borderColor:'#F2D64B',
-                // borderWidth:'0.25em',
                 borderRadius: '2em',
-                // borderStyle:'solid'
                 }}>
         <NavBar />
             <Col style={{paddingTop:avatarPadding}}>
             <Row>
-                    <div className='main-title' >
-                    <h1 style={{fontFamily:'Montse', color:'#F2D64B'}}>JULIAN ALBERTI</h1>
-                    <h6  style={{color:'white'}}>Web developer - Graphic artist</h6>
+                    <div className='main-title' style={themeStyles[theme]}>
+                    <h1 style={{fontFamily:'Montse'}}>JULIAN ALBERTI</h1>
+                    <h6  style={themeStylesSubTitles[theme]}>Web developer - Graphic artist</h6>
                     </div>
+                </Row>
+                <Row>
+                    <ThemeSwitcher />
                 </Row>
                 <div  className='contentFrame' >
                 
@@ -118,7 +142,7 @@ export const MainPage = () => {
                         <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse', fontSize:'1.5em'}}>About Me</h1>
                     </Row>
                     <Row className='about-me' >
-                        <h5 style={{color:'white'}} id='other-stuff'>
+                        <h5 style={themeStylesSubTitles[theme]} id='other-stuff'>
                         I am an enthusiastic person, creative, and always willing to explore new ideas and concepts. <br />
                         I have a desire to learn, and that drives me to develop my skills and apply them in innovative projects.
                         </h5>
@@ -126,14 +150,6 @@ export const MainPage = () => {
                 </div>
             </Col>
             <Container fluid="xs" style={{ marginTop:'1em'}} >
-                {/* <Tabs
-                id="justify-tab-example"
-                activeKey={key}
-                onSelect={(k) => setKey(k)}
-                className="mb-3"
-                justify
-                >
-                <Tab eventKey="home" title="My Profile" style={{ textAlign: contentAlign, color: 'white', width: contentWidth, margin:'auto' }}> */}
                 <Container className='contentFrame'  style={{padding:'2em', textAlign: contentAlign, color: 'white', width:'90%', margin:'auto' }}>
                     <Row style={{marginBottom:'1em', fontFamily:'Montse'}}>
                         <h1>Experience</h1>
@@ -207,9 +223,7 @@ export const MainPage = () => {
                         </h6>
                     </Row>
                     
-                </Container>    
-                {/* </Tab>
-                <Tab eventKey="profile" title="My Hobbies"> */}
+                </Container>
                 <Container className='contentFrame' style={{padding:'2em', width:'90%', marginTop:'1em' }}>
                 <h1 style={{paddingBottom:'0.5em', fontFamily:'Montse'}}>
                             Vector Illustration
@@ -266,10 +280,6 @@ export const MainPage = () => {
                         <YouTube videoId={videoId} opts={opts} />
                     </Row>
                 </Container>
-
-
-                {/* </Tab>
-                <Tab eventKey="contact" title="Contact"> */}
                 <Container className='contentFrame' id='contact' style={{padding:'2em', width:'90%', marginTop:'1em', color:'#F2D64B' }}>
                     
                         <ContactForm />
@@ -347,6 +357,7 @@ export const MainPage = () => {
     </Row>
     </Container>
     </BrowserRouter>
+    </ThemeContext.Provider>
   </>
 )
 

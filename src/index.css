@@ -367,7 +367,7 @@ body {
 
 body {
   background-color: #1F0459;
-  background-image: url(assets/img/soft.jpg);
+  background-image: url(assets/img/light-bg.jpg);
   background-size: cover;
   background-attachment: fixed;
   min-width: fit-content;
@@ -381,7 +381,6 @@ body {
 }
 
 h1 {
-  color: #F2D64B;
   font-size: 2.2em;
   line-height: 1.1;
 }

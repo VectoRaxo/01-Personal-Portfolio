@@ -6,11 +6,43 @@ import Container from 'react-bootstrap/Container';
 import { ShowModal } from "./assets/components/Modal";
 import { MainPage } from "./assets/components/MainPage";
 import { useSpring, animated } from '@react-spring/web';
+import ThemeContext from './assets/components/ThemeContext'
+import ThemeSwitcher from './assets/components/ThemeSwitcher'
+
 
 
 
 
 function App() {
+  
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  }
+  
+  useEffect(() => {
+    // Obtener la URL de la imagen de fondo según el tema
+    const backgroundImageUrl = theme === 'dark' ? './public/assets/img/dark-bg.jpg' : './public/assets/img/light-bg.jpg';
+    // Establecer la imagen de fondo del body
+    document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
+    
+    // Limpiar la imagen de fondo al desmontar el componente
+    return () => {
+      document.body.style.backgroundImage = '';
+    };
+  }, [theme]);
+
+  const themeStyles = {
+    light: {
+      border: '0.2em solid #F2D64B',
+      color: '#F2D64B',
+    },
+    dark: {
+      border: '0.2em solid white',
+      color: 'white',
+    },
+  }
   
     const [animation, setAnimation] = useState(false);
     const [animationCompleted, setAnimationCompleted] = useState(false);
@@ -22,7 +54,6 @@ function App() {
       if (animation) {
         setAnimationCompleted(true)
       }
-      
       const introButtonElement = document.getElementById('intro-button')
       introButtonElement.addEventListener('animationend', handleAnimationEnd)
       return () => {
@@ -30,8 +61,8 @@ function App() {
       }
     }, [animation])
     
+
     const fadeAnimation = useSpring({
-      
       opacity: animation ? '0%' : '100%',
       pointerEvents: animation ? 'none' : 'auto',
     })
@@ -43,18 +74,23 @@ function App() {
   
   return (
     <>
-    <div className='button-frame'>
-        <animated.div
+     <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {!animationCompleted && <ThemeSwitcher />} 
+     
+    <animated.div style={fadeAnimation}
+         className='button-frame' 
+          >
+        <div
           id="intro-button"
           className='border-button'
-          style={fadeAnimation}
+          style={themeStyles[theme]}
           onClick={handleClic}
         >
-          <Container className="name-button tp-transform">
-            <h1 style={{color:'white', fontSize:'2em'}}>Welcome</h1>
+          <Container  className="name-button tp-transform">
+            <h1 style={{ fontSize:'2em'}}>Welcome</h1>
           </Container>
-        </animated.div>
-    </div>
+        </div>
+    </animated.div>
      {animationCompleted && <MainPage />}
        
     
@@ -63,6 +99,8 @@ function App() {
     <div>
       <ShowModal />      
     </div>
+    
+    </ThemeContext.Provider>
     </>
   )
 }
