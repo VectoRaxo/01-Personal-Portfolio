@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState, useContext} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,17 +7,18 @@ import ThemeSwitcher from './ThemeSwitcher';
 import ThemeContext from './ThemeContext';
 
 export const NavBar = () => {
-
+  const { theme, toggleTheme } = useContext(ThemeContext);
     return (
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <Container className='navbarRow'>
         <Row >
           <Navbar fixed='top'  data-bs-theme='dark' expand="lg" className="bg-body-tertiary">
-          <Container>
+          <Container >
             <Navbar.Brand href="https://julian-portfolio-av.netlify.app/">Julián Alberti</Navbar.Brand>
             <Navbar.Brand style={{marginTop:'0.5em',marginRight:'3em', fontSize:'0.8em'}}><ThemeSwitcher /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
+            <Navbar.Collapse id="basic-navbar-nav" >
+              <Nav style={{position: 'fixed', right: '15%',}}>
                 <Nav.Link href="#about-me">About me</Nav.Link>
                 <Nav.Link href="#other-stuff">My career</Nav.Link>
                 <Nav.Link href="#contact">Contact</Nav.Link>
@@ -27,5 +28,6 @@ export const NavBar = () => {
         </Navbar>
         </Row>
         </Container>
+        </ThemeContext.Provider>
     ) 
 }

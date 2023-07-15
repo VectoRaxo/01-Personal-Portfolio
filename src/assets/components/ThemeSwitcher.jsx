@@ -18,6 +18,7 @@ const ThemeSwitcher = () => {
         id="custom-switch"
         label={`${theme} mode`}
         onClick={toggleTheme}
+        
       />
     </Form>
     </div>
