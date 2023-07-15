@@ -23,7 +23,7 @@ function App() {
   
   useEffect(() => {
     // Obtener la URL de la imagen de fondo según el tema
-    const backgroundImageUrl = theme === 'dark' ? './public/assets/img/dark-bg.jpg' : './public/assets/img/light-bg.jpg';
+    const backgroundImageUrl = theme === 'dark' ? 'assets/img/dark-bg.jpg' : 'assets/img/light-bg.jpg';
     // Establecer la imagen de fondo del body
     document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
     
@@ -36,7 +36,7 @@ function App() {
   const themeStyles = {
     light: {
       border: '0.2em solid #F2D64B',
-      color: '#F2D64B',
+      color: 'white',
     },
     dark: {
       border: '0.2em solid white',
@@ -91,7 +91,8 @@ function App() {
           </Container>
         </div>
     </animated.div>
-     {animationCompleted && <MainPage />}
+     {animationCompleted && <MainPage
+                              theme={theme} />}
        
     
       

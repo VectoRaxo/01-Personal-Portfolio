@@ -1,4 +1,4 @@
-import  {useState, useEffect} from 'react'
+import  {useState, useEffect, useContext} from 'react'
 import Container from 'react-bootstrap/Container';
 import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
@@ -17,19 +17,33 @@ import ThemeSwitcher from './ThemeSwitcher'
 
 
 
-
 export const MainPage = () => {
     const [modalShow, setModalShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setIsTablet] = useState(false);
-    const [theme, setTheme] = useState();
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-  }
-    
-    // config del video (responsive)
+    let contentWidth = '90%'
+      let contentMargin = '3em'
+      let contentAlign = 'left'
+      // let avatarWidth = '120px'
+      let avatarPadding = '3em'
+      
+      if (isMobile){
+          contentAlign = 'center'
+          contentMargin = '0em'
+          contentWidth = '100%'
+          // avatarWidth = '160px'
+          avatarPadding = '3em'
+      }else{
+          contentAlign = 'left'
+          contentMargin = 'auto'
+          contentWidth = '90%'
+          // avatarWidth = '240px'
+          avatarPadding = '2em'
+      }
+       // config del video (responsive)
     const videoId = 'gyDIBpEuYQc'
     let videoHeight = '360'
     let videoWidth = '640'
@@ -48,25 +62,129 @@ export const MainPage = () => {
           autoplay: 0,
         },
       };
-    
-      const themeStyles = {
-        light: {
-          color: '#F2D64B',
-        },
-        dark: {
-          color: 'white',
-        },
-      }
 
-      const themeStylesSubTitles = {
+  useEffect(() => {
+    // Obtener la URL de la imagen de fondo según el tema
+    const backgroundImageUrl = theme === 'dark' ? 'assets/img/dark-bg.jpg' : 'assets/img/light-bg.jpg';
+    // Establecer la imagen de fondo del body
+    document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
+    console.log(theme)
+    // Limpiar la imagen de fondo al desmontar el componente
+    return () => {
+      document.body.style.backgroundImage = '';
+    };
+  }, [theme]);
+   
+    
+      const themeTitles = {
         light: {
-          
-          color: 'white',
-        },
-        dark: {
             color: '#F2D64B',
         },
+        dark: {
+            color: '#8DF2F2',
+        },
       }
+      const themeStylesSubTitles = {
+        light: {
+            color: 'white',
+        },
+        dark: {
+            color: 'white',
+        },
+      }
+      const themeContentFrame = {
+        light: {
+            borderStyle: 'solid',
+            borderColor: '#f2d64b60',
+            backgroundColor: '#1f04592f',
+            width:'90%',
+            margin: '1em auto auto auto',
+            marginTop: '1em',
+            borderRadius: '2em',
+            padding:'2em',
+            textAlign: 'center',
+            color: 'white',
+        },
+        dark: {
+            borderStyle: 'solid',
+            borderColor: '#742BD9',
+            backgroundColor: '#1f04592f',
+            width:'90%',
+            margin: '1em auto auto auto',
+            marginTop: '1em',
+            borderRadius: '2em',
+            padding:'2em',
+            textAlign: 'center',
+            color: 'white',
+        },
+      }
+      const themeCvContentFrame = {
+        light: {
+            borderStyle: 'solid',
+            borderColor: '#f2d64b60',
+            backgroundColor: '#1f04592f',
+            width:'90%',
+            margin: '1em auto auto auto',
+            marginTop: '1em',
+            borderRadius: '2em',
+            padding:'2em',
+            textAlign: contentAlign,
+            color: 'white',
+        },
+        dark: {
+            borderStyle: 'solid',
+            borderColor: '#742BD9',
+            backgroundColor: '#1f04592f',
+            width:'90%',
+            margin: '1em auto auto auto',
+            marginTop: '1em',
+            borderRadius: '2em',
+            padding:'2em',
+            textAlign: contentAlign,
+            color: 'white',
+        },
+      }
+      const themeCvSubtitles = {
+        light: {
+            width: contentWidth,
+            color:'#F2D64B',
+            margin:'auto' 
+        },
+        dark : {
+            width: contentWidth,
+            color:'#8DF2F2',
+            margin:'auto' 
+        }
+      }
+      const themeFooterFrame = {
+        light: {
+                display:'flex',
+                justifyContent:'center',
+                contentAlign:'center',
+                textAlign:'center',
+                margin:'1em auto',
+                width:'75%',
+                padding:'1em',
+                borderStyle:'solid',
+                backgroundColor:'#1f04592f',
+                borderColor:'#f2d64b60',
+                borderRadius:'2em'
+        },
+        dark: {
+            display:'flex',
+                justifyContent:'center',
+                contentAlign:'center',
+                textAlign:'center',
+                margin:'1em auto',
+                width:'75%',
+                padding:'1em',
+                borderStyle:'solid',
+                backgroundColor:'#1f04592f',
+                borderColor:'#742BD9',
+                borderRadius:'2em'
+        }
+      }
+      
 
     const handleImageClick = (src, alt, ind) => {
       setSelectedImage({ src, alt, ind });
@@ -96,25 +214,6 @@ export const MainPage = () => {
         window.removeEventListener('resize', handleResize);
       };
     }, [])
-    let contentWidth = '90%'
-    let contentMargin = '3em'
-    let contentAlign = 'left'
-    // let avatarWidth = '120px'
-    let avatarPadding = '3em'
-    
-    if (isMobile){
-        contentAlign = 'center'
-        contentMargin = '0em'
-        contentWidth = '100%'
-        // avatarWidth = '160px'
-        avatarPadding = '3em'
-    }else{
-        contentAlign = 'left'
-        contentMargin = 'auto'
-        contentWidth = '90%'
-        // avatarWidth = '240px'
-        avatarPadding = '2em'
-    }
   return (
 <>
 <ThemeContext.Provider value={{ theme, toggleTheme }}>    
@@ -128,18 +227,15 @@ export const MainPage = () => {
         <NavBar />
             <Col style={{paddingTop:avatarPadding}}>
             <Row>
-                    <div className='main-title' style={themeStyles[theme]}>
+                    <div className='main-title' style={themeTitles[theme]}>
                     <h1 style={{fontFamily:'Montse'}}>JULIAN ALBERTI</h1>
                     <h6  style={themeStylesSubTitles[theme]}>Web developer - Graphic artist</h6>
                     </div>
                 </Row>
-                <Row>
-                    <ThemeSwitcher />
-                </Row>
-                <div  className='contentFrame' >
+                <div style={themeContentFrame[theme]} >
                 
-                    <Row>
-                        <h1 className='sub-main-title' style={{color:'#F2D64B', fontFamily:'Montse', fontSize:'1.5em'}}>About Me</h1>
+                    <Row style={themeTitles[theme]}>
+                        <h1 className='sub-main-title' style={{fontFamily:'Montse', fontSize:'1.5em'}}>About Me</h1>
                     </Row>
                     <Row className='about-me' >
                         <h5 style={themeStylesSubTitles[theme]} id='other-stuff'>
@@ -150,11 +246,11 @@ export const MainPage = () => {
                 </div>
             </Col>
             <Container fluid="xs" style={{ marginTop:'1em'}} >
-                <Container className='contentFrame'  style={{padding:'2em', textAlign: contentAlign, color: 'white', width:'90%', margin:'auto' }}>
+                <Container style={themeCvContentFrame[theme]}>
                     <Row style={{marginBottom:'1em', fontFamily:'Montse'}}>
-                        <h1>Experience</h1>
+                        <h1 style={themeTitles[theme]}>Experience</h1>
                     </Row>
-                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
+                    <Row style={themeCvSubtitles[theme]}>
                         <h5>
                             Web developer - Freelance (2023)
                         </h5>
@@ -165,7 +261,7 @@ export const MainPage = () => {
                         · Use of Javascript, Typescript, React.js
                         </h6>
                     </Row>
-                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
+                    <Row style={themeCvSubtitles[theme]}>
                         <h5>
                             Developing of videogames in Unity (2023)
                         </h5>
@@ -177,7 +273,7 @@ export const MainPage = () => {
 
                         </h6>
                     </Row>
-                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
+                    <Row style={themeCvSubtitles[theme]}>
                         <h5>
                         Technical support and customer service (2021-2022)
                         </h5>
@@ -189,7 +285,7 @@ export const MainPage = () => {
                         · Teamwork.
                         </h6>
                     </Row>
-                    <Row style={{width: contentWidth, color:'#F2D64B', margin:'auto' }}>
+                    <Row style={themeCvSubtitles[theme]}>
                         <h5>
                         Manager - El Baúl Gráfico (2015-2019)
                         </h5>
@@ -202,7 +298,7 @@ export const MainPage = () => {
                             machinery.
                         </h6>
                     </Row>
-                    <Row style={{width: contentWidth, color:'#F2D64B', margin: contentMargin }}>
+                    <Row style={themeCvSubtitles[theme]}>
                         <h5>
                         Application Developer (Internship)
                         </h5>
@@ -214,7 +310,7 @@ export const MainPage = () => {
                         </h6>
                     </Row>
                     <Row style={{fontFamily:'Montse'}}>
-                        <h1>Education</h1>
+                        <h1 style={themeTitles[theme]}>Education</h1>
                     </Row>
                     <Row style={{width: contentWidth, marginLeft: contentMargin}}>
                         <h6>
@@ -224,7 +320,7 @@ export const MainPage = () => {
                     </Row>
                     
                 </Container>
-                <Container className='contentFrame' style={{padding:'2em', width:'90%', marginTop:'1em' }}>
+                <Container style={themeContentFrame[theme]}>
                 <h1 style={{paddingBottom:'0.5em', fontFamily:'Montse'}}>
                             Vector Illustration
                         </h1>
@@ -280,7 +376,7 @@ export const MainPage = () => {
                         <YouTube videoId={videoId} opts={opts} />
                     </Row>
                 </Container>
-                <Container className='contentFrame' id='contact' style={{padding:'2em', width:'90%', marginTop:'1em', color:'#F2D64B' }}>
+                <Container  id='contact' style={themeContentFrame[theme]}>
                     
                         <ContactForm />
                 </Container>
@@ -301,18 +397,7 @@ export const MainPage = () => {
     </Row>
     <Row>
         <Container className='footerContainer'
-            style={{display:'flex',
-                justifyContent:'center',
-                contentAlign:'center',
-                textAlign:'center',
-                margin:'1em auto',
-                width:'75%',
-                padding:'1em',
-                borderStyle:'solid',
-                backgroundColor:'#1f04592f',
-                borderColor:'#f2d64b60',
-                borderRadius:'2em'
-                }}>
+            style={themeFooterFrame[theme]}>
             <Col style={{display:'flex',
                 flexDirection:'column',
                 contentAlign:'center',
