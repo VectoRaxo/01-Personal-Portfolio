@@ -75,7 +75,7 @@ function App() {
   return (
     <>
      <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {!animationCompleted && <ThemeSwitcher />} 
+     
      
     <animated.div style={fadeAnimation}
          className='button-frame' 
@@ -89,8 +89,12 @@ function App() {
           <Container  className="name-button tp-transform">
             <h1 style={{ fontSize:'2em'}}>Welcome</h1>
           </Container>
+          
         </div>
     </animated.div>
+    <Container style={{position: 'sticky',width: '150px', top: '10%'}}>
+      {!animationCompleted && <ThemeSwitcher />} 
+    </Container>
      {animationCompleted && <MainPage
                               theme={theme} />}
        

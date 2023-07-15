@@ -458,8 +458,8 @@ export const MainPage = () => {
                 </Container>
                  </Link>
             </Col>
-            <Col style={themeFooterTitles[theme]}>
-                <h6>By me - 2023 <br />
+            <Col >
+                <h6 style={themeFooterTitles[theme]}>By me - 2023 <br />
                 Under construction <br />
                 </h6> 
                 <h6 style={{color:'white'}}>julialberti666@gmail.com</h6>
