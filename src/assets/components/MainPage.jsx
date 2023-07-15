@@ -156,6 +156,32 @@ export const MainPage = () => {
             margin:'auto' 
         }
       }
+      const themeVectoresTitle = {
+        light: {
+            color: '#F2D64B',
+            paddingBottom:'0.5em',
+            fontFamily:'Montse' 
+        },
+        dark : {
+            color: '#8DF2F2',
+            paddingBottom:'0.5em',
+            fontFamily:'Montse'
+        }
+      }
+      const themeDroneTitle = {
+        light: {
+            color: '#F2D64B',
+            paddingTop: '1em',
+            paddingBottom:'0.5em',
+            fontFamily:'Montse' 
+        },
+        dark : {
+            color: '#8DF2F2',
+            paddingTop: '1em',
+            paddingBottom:'0.5em',
+            fontFamily:'Montse'
+        }
+      }
       const themeFooterFrame = {
         light: {
                 display:'flex',
@@ -182,6 +208,20 @@ export const MainPage = () => {
                 backgroundColor:'#1f04592f',
                 borderColor:'#742BD9',
                 borderRadius:'2em'
+        }
+      }
+      const themeFooterTitles = {
+        light: {
+            display:'flex',
+            flexDirection:'column',
+            contentAlign:'center',
+            color:'#F2D64B',
+        },
+        dark: {
+            display:'flex',
+            flexDirection:'column',
+            contentAlign:'center',
+            color:'#8DF2F2',
         }
       }
       
@@ -321,7 +361,7 @@ export const MainPage = () => {
                     
                 </Container>
                 <Container style={themeContentFrame[theme]}>
-                <h1 style={{paddingBottom:'0.5em', fontFamily:'Montse'}}>
+                <h1 style={themeVectoresTitle[theme]}>
                             Vector Illustration
                         </h1>
                     <Row className='thumbnails'>
@@ -369,7 +409,7 @@ export const MainPage = () => {
 
                         </div>
                     </Row>
-                        <h1 style={{paddingTop:'1em', paddingBottom:'0.5em', fontFamily:'Montse'}}>
+                        <h1 style={themeDroneTitle[theme]}>
                             Drone footage
                         </h1>
                     <Row  >
@@ -398,21 +438,12 @@ export const MainPage = () => {
     <Row>
         <Container className='footerContainer'
             style={themeFooterFrame[theme]}>
-            <Col style={{display:'flex',
-                flexDirection:'column',
-                contentAlign:'center',
-                color:'#F2D64B',
-                
-                }}>
+            <Col style={themeFooterTitles[theme]}>
                 <h5>LOCATION</h5>
                 <h6 style={{color:'white'}}>Malaga - Spain <br /> (29003)</h6>
 
             </Col>
-            <Col style={{display:'flex',
-                flexDirection:'column',
-                contentAlign:'center',
-                color:'#F2D64B',
-                }}>
+            <Col style={themeFooterTitles[theme]}>
                 <h5>AROUND THE WEB</h5>
                 <Link to="https://www.linkedin.com/in/juli%C3%A1n-alberti-vargas-122651238/" target="_blank"> 
                 <Container style={{color:'white'}}>
@@ -427,11 +458,7 @@ export const MainPage = () => {
                 </Container>
                  </Link>
             </Col>
-            <Col style={{display:'flex',
-                flexDirection:'column',
-                contentAlign:'center',
-                color:'#F2D64B',
-                }}>
+            <Col style={themeFooterTitles[theme]}>
                 <h6>By me - 2023 <br />
                 Under construction <br />
                 </h6> 

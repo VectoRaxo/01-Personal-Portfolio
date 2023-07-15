@@ -15,7 +15,7 @@ export const NavBar = () => {
           <Navbar fixed='top'  data-bs-theme='dark' expand="lg" className="bg-body-tertiary">
           <Container >
             <Navbar.Brand href="https://julian-portfolio-av.netlify.app/">Julián Alberti</Navbar.Brand>
-            <Navbar.Brand style={{marginTop:'0.5em',marginRight:'3em', fontSize:'0.8em'}}><ThemeSwitcher /></Navbar.Brand>
+            <Navbar.Brand style={{marginTop:'0.5em',marginRight:'auto', marginLeft:'auto', fontSize:'0.8rem'}}><ThemeSwitcher /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" >
               <Nav style={{position: 'fixed', right: '15%',}}>

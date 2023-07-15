@@ -5,6 +5,12 @@ import Form from 'react-bootstrap/Form';
 
 const ThemeSwitcher = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  let checked = false
+  if (theme === 'light'){
+    checked = false
+  }else{
+    checked = true
+  }
   return (
     <div>
       {/* <h2>Theme Switcher</h2>
@@ -18,7 +24,7 @@ const ThemeSwitcher = () => {
         id="custom-switch"
         label={`${theme} mode`}
         onClick={toggleTheme}
-        
+        checked={checked}
       />
     </Form>
     </div>

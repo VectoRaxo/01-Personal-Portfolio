@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import ThemeContext from './ThemeContext';
 
 
 
@@ -9,7 +10,24 @@ export const ContactForm = () => {
   const [formContent, setFormContent] = useState({email: '', message: ''});
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const { theme, toggleTheme } = useContext(ThemeContext)
   
+  const themeFormTitle = {
+    light: {
+        color: '#F2D64B',
+        fontFamily:'Montse' 
+    },
+    dark : {
+        color: '#8DF2F2',
+        fontFamily:'Montse'
+    }
+  }
+  let buttonTheme = 'outline-warning'
+  if (theme === 'light'){
+    buttonTheme = 'outline-warning'
+  }else{
+    buttonTheme = 'outline-info'
+  }
   const encode = (data) => {
     return Object.keys(data)
         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -38,10 +56,10 @@ export const ContactForm = () => {
   
   return(
     isSubmitted? (
-      <h5>Thank you!</h5>
+      <h5 style={themeFormTitle[theme]}>Thank you!</h5>
     ) : (
       <section>
-      <h1 style={{fontFamily:'Montse'}}>Contact me</h1>
+      <h1 style={themeFormTitle[theme]}>Contact me</h1>
     <Form className='formContact' method='POST' name="contact" data-netlify="true" onSubmit={handleSubmit}>
     <input type="hidden" name="form-name" value="contact" />
         <Form.Group className="mb-3" controlId="email">
@@ -55,7 +73,7 @@ export const ContactForm = () => {
         <Form.Control as="textarea" rows={3} name="message"
         value={formContent.message}
         onChange={(e) => setFormContent({ ...formContent, message: e.target.value })}/>
-        <Button style={{marginTop: '1rem'}} variant="outline-warning" id='contactModal' type="submit">
+        <Button style={{marginTop: '1rem'}} variant={buttonTheme} id='contactModal' type="submit">
           {isLoading?   <Spinner animation="border" size="sm" />: 'Submit'}
         </Button>
         </Form.Group>
