@@ -11,8 +11,9 @@ import { BrowserRouter } from 'react-router-dom';
 // import Tab from 'react-bootstrap/Tab';
 // import Tabs from 'react-bootstrap/Tabs';
 import YouTube from 'react-youtube';
-import { ContactForm } from './Form';
+// import { ContactForm } from './Form';
 import ThemeContext from './ThemeContext'
+import { ContactMe } from './ContactMe';
 
 
 
@@ -225,6 +226,16 @@ export const MainPage = () => {
             color:'#8DF2F2',
         }
       }
+      const themeFooterSubTitles = {
+        light: {
+            color:'white',
+            paddingBottom: '1rem'
+        },
+        dark: {
+            color:'white',
+            paddingBottom: '1rem'
+        }
+      }
       
 
     const handleImageClick = (src, alt, ind) => {
@@ -418,8 +429,8 @@ export const MainPage = () => {
                     </Row>
                 </Container>
                 <Container  id='contact' style={themeContentFrame[theme]}>
-                    
-                        <ContactForm />
+                        <ContactMe />
+                        {/* <ContactForm /> */}
                 </Container>
                
                 
@@ -441,13 +452,13 @@ export const MainPage = () => {
             style={themeFooterFrame[theme]}>
             <Col style={themeFooterTitles[theme]}>
                 <h5>LOCATION</h5>
-                <h6 style={{color:'white'}}>Malaga - Spain <br /> (29003)</h6>
+                <h6 style={themeFooterSubTitles[theme]}>Malaga - Spain <br /> (29003)</h6>
 
             </Col>
             <Col style={themeFooterTitles[theme]}>
                 <h5>AROUND THE WEB</h5>
                 <Link to="https://www.linkedin.com/in/juli%C3%A1n-alberti-vargas-122651238/" target="_blank"> 
-                <Container style={{color:'white'}}>
+                <Container style={themeFooterSubTitles[theme]}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="svgIcons" width="48" height="48" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" ></path>
@@ -463,7 +474,7 @@ export const MainPage = () => {
                 <h6 style={themeFooterTitles[theme]}>By me - 2023 <br />
                 Under construction <br />
                 </h6> 
-                <h6 style={{color:'white'}}>julialberti666@gmail.com</h6>
+                <h6 style={{color: 'white'}}>julialberti666@gmail.com</h6>
             </Col>
         </Container>
         

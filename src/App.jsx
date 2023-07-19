@@ -16,15 +16,24 @@ import ThemeSwitcher from './assets/components/ThemeSwitcher'
 function App() {
   
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const handleLoad = () => {
+      setIsLoading(false)
+    }
+    window.addEventListener('load', handleLoad)
+
+    return () => {
+      window.removeEventListener('load', handleLoad)
+    }
+  }, [])
   
   useEffect(() => {
     // Obtener la URL de la imagen de fondo según el tema
-    // const backgroundColor = theme === 'dark' ? 'linear-gradient(90deg, rgba(201,0,255,1) 0%, rgba(9,9,121,1) 20%, rgba(2,0,36,1) 40%, rgba(2,0,36,1) 60%, rgba(9,9,121,1) 80%, rgba(201,0,255,1) 100%)' :
-    //                                             'linear-gradient(90deg, rgba(255,229,93,1) 0%, rgba(148,187,233,1) 25%, rgba(222,176,207,1) 40%, rgba(238,174,202,1) 60%, rgba(148,187,233,1) 75%, rgba(255,229,93,1) 100%)'
     const backgroundImageUrl = theme === 'dark' ? 'assets/img/dark-bg.jpg' : 'assets/img/light-bg.jpg'
     // Establecer la imagen de fondo del body
     document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
-    // document.body.style.background= `${backgroundColor}`
     // Limpiar la imagen de fondo al desmontar el componente
     return () => {
       document.body.style.backgroundImage = '';
@@ -53,11 +62,15 @@ function App() {
         setAnimationCompleted(true)
       }
       const introButtonElement = document.getElementById('intro-button')
-      introButtonElement.addEventListener('animationend', handleAnimationEnd)
-      return () => {
-        introButtonElement.removeEventListener('animationend', handleAnimationEnd)
+      if (introButtonElement) {
+        introButtonElement.addEventListener('animationend', handleAnimationEnd);
       }
-    }, [animation])
+      return () => {
+        if (introButtonElement) {
+        introButtonElement.removeEventListener('animationend', handleAnimationEnd)
+        }
+      }
+    }, [animation, isLoading])
     
 
     const fadeAnimation = useSpring({
@@ -72,9 +85,10 @@ function App() {
   
   return (
     <>
+    {isLoading ? (
+      <Container style={{fontFamily: 'Montse', color: 'white'}}><h6>Loading...</h6></Container>
+     ):(
      <ThemeContext.Provider value={{ theme, toggleTheme }}>
-     
-     
     <animated.div style={fadeAnimation}
          className='button-frame' 
           >
@@ -101,8 +115,9 @@ function App() {
     <div>
       <ShowModal />      
     </div>
-    
     </ThemeContext.Provider>
+     )
+    }
     </>
   )
 }

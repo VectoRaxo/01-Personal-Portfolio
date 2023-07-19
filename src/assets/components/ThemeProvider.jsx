@@ -6,7 +6,6 @@ const ThemeProvider = ({ children }) => {
   
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
-    console.log('savedtheme ' + savedTheme)
     if (savedTheme) {
       setTheme(savedTheme)
     }
