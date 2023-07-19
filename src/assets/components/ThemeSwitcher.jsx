@@ -1,30 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import ThemeContext from './ThemeContext';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
 const ThemeSwitcher = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  let checked = false
-  if (theme === 'light'){
-    checked = false
-  }else{
-    checked = true
+  const [ isChecked, setIsChecked ] = useState(theme === 'light' ? false : true)
+
+  const handleChange = (e) => {
+    setIsChecked(e.target.checked)
   }
   return (
     <div>
-      {/* <h2>Theme Switcher</h2>
-      <p>Tema actual: {theme}</p> */}
-      {/* <Button variant={buttonTheme} onClick={toggleTheme}>Cambiar tema</Button> */}
-
-
       <Form style={{width: '130px', color: 'white'}}>
       <Form.Check
         type="switch"
         id="custom-switch"
         label={`${theme} mode`}
         onClick={toggleTheme}
-        checked={checked}
+        onChange={handleChange}
+        checked={isChecked}
       />
     </Form>
     </div>

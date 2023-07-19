@@ -13,7 +13,6 @@ import { BrowserRouter } from 'react-router-dom';
 import YouTube from 'react-youtube';
 import { ContactForm } from './Form';
 import ThemeContext from './ThemeContext'
-import ThemeSwitcher from './ThemeSwitcher'
 
 
 
@@ -63,17 +62,19 @@ export const MainPage = () => {
         },
       };
 
-  useEffect(() => {
-    // Obtener la URL de la imagen de fondo según el tema
-    const backgroundImageUrl = theme === 'dark' ? 'assets/img/dark-bg.jpg' : 'assets/img/light-bg.jpg';
-    // Establecer la imagen de fondo del body
-    document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
-    console.log(theme)
-    // Limpiar la imagen de fondo al desmontar el componente
-    return () => {
-      document.body.style.backgroundImage = '';
-    };
-  }, [theme]);
+      useEffect(() => {
+        // Obtener la URL de la imagen de fondo según el tema
+        // const backgroundColor = theme === 'dark' ? 'linear-gradient(90deg, rgba(201,0,255,1) 0%, rgba(9,9,121,1) 20%, rgba(2,0,36,1) 40%, rgba(2,0,36,1) 60%, rgba(9,9,121,1) 80%, rgba(201,0,255,1) 100%)' :
+        //                                             'linear-gradient(90deg, rgba(255,229,93,1) 0%, rgba(148,187,233,1) 25%, rgba(222,176,207,1) 40%, rgba(238,174,202,1) 60%, rgba(148,187,233,1) 75%, rgba(255,229,93,1) 100%)'
+        const backgroundImageUrl = theme === 'dark' ? 'assets/img/dark-bg.jpg' : 'assets/img/light-bg.jpg'
+        // Establecer la imagen de fondo del body
+        document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
+        // document.body.style.background= `${backgroundColor}`
+        // Limpiar la imagen de fondo al desmontar el componente
+        return () => {
+          document.body.style.backgroundImage = '';
+        };
+      }, [theme]);
    
     
       const themeTitles = {
